@@ -1,118 +1,111 @@
+/* استفاده از فونت استاندارد و پرقدرت وزیرمتن */
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
 
-@font-face {
-    font-family: 'Yekan Bakh';
-    src: url('https://cdn.jsdelivr.net/gh/amin-ahmadi/yekan-bakh-font@master/fonts/woff2/YekanBakh-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Yekan Bakh';
-    src: url('https://cdn.jsdelivr.net/gh/amin-ahmadi/yekan-bakh-font@master/fonts/woff2/YekanBakh-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-}
-
 body {
-    font-family: 'Yekan Bakh', Tahoma, Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+    background-color: #eef2f5;
     direction: rtl;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
+    color: #333;
 }
 
+/* کادر اصلی پیش‌فاکتور با ابعاد بهینه برای کاغذ A4 */
 .invoice-box {
-    max-width: 850px;
+    max-width: 800px;
     margin: auto;
     background: #fff;
-    padding: 25px;
-    border: 2px solid #000;
-    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    padding: 20px 25px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
+/* هدر فاکتور */
 .invoice-header {
     text-align: center;
-    border-bottom: 2px solid #000;
-    padding-bottom: 12px;
-    margin-bottom: 15px;
+    border-bottom: 2px solid #1e293b;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .invoice-header h2 {
-    margin: 0 0 5px 0;
-    font-size: 22px;
+    margin: 0 0 3px 0;
+    font-size: 20px;
+    color: #1e293b;
+    font-weight: bold;
 }
 
 .invoice-header p {
     margin: 0;
-    font-size: 16px;
+    font-size: 15px;
+    color: #0284c7;
     font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .invoice-meta {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
-    font-size: 14px;
+    margin-top: 8px;
+    font-size: 13px;
     font-weight: bold;
+    color: #475569;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 table, th, td {
-    border: 1px solid #000;
+    border: 1px solid #94a3b8;
 }
 
 th, td {
-    padding: 10px 8px;
+    padding: 7px 8px;
     text-align: center;
-    font-size: 14px;
-    font-family: 'Yekan Bakh', Tahoma, sans-serif;
+    font-size: 13px;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
 }
 
+/* هدر جدول با رنگ مدرن و رسمی */
 th {
-    background-color: #f2f2f2;
+    background-color: #f1f5f9;
+    color: #1e293b;
     font-weight: bold;
 }
 
-/* تنظیم پهنای ستون‌های جدول کالاها برای خوانایی بهتر شرح کالا */
-.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 6%; }  /* ردیف */
-.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 40%; text-align: right; } /* شرح کالا (بزرگ و راست‌چین) */
-.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 18%; } /* فی */
-.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 8%; }  /* تعداد */
-.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 12%; } /* تخفیف */
-.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 16%; } /* مبلغ */
+/* تنظیم عرض ستون‌های جدول کالاها */
+.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }
+.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 42%; text-align: right; }
+.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 17%; }
+.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 8%; }
+.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 12%; }
+.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 16%; }
 
 .parties-table td {
     text-align: right;
+    font-size: 12.5px;
+    padding: 6px 8px;
 }
 
 .parties-table .label {
     font-weight: bold;
-    width: 90px;
-    background-color: #f9f9f9;
+    width: 85px;
+    background-color: #f8fafc;
+    color: #334155;
 }
 
-input[type="text"], input[type="number"], textarea {
+input[type="text"], input[type="number"] {
     width: 96%;
     border: none;
-    font-family: 'Yekan Bakh', Tahoma;
-    font-size: 14px;
+    font-family: 'Vazirmatn', Tahoma;
+    font-size: 13px;
     background: transparent;
     outline: none;
-}
-
-/* استایل مخصوص شرح کالا برای پشتیبانی از متن‌های طولانی */
-textarea.item-desc {
-    resize: vertical;
-    height: 35px;
-    line-height: 1.4;
-    text-align: right;
-    padding: 2px;
+    color: #0f172a;
 }
 
 .parties-table input {
@@ -125,56 +118,69 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+/* جدول جمع کل */
 .totals-table {
-    width: 45%;
+    width: 42%;
     margin-left: 0;
     margin-right: auto;
+    margin-bottom: 10px;
 }
 
 .totals-table td {
     text-align: left;
-    padding: 8px 12px;
+    padding: 5px 10px;
+    font-size: 13px;
 }
 
 .totals-table td:first-child {
     font-weight: bold;
-    background-color: #f9f9f9;
+    background-color: #f8fafc;
     text-align: right;
 }
 
+.grand-total-row {
+    background-color: #f0fdf4;
+    font-weight: bold;
+    color: #166534;
+}
+
 .invoice-footer-note {
-    font-size: 13px;
-    border: 1px solid #000;
-    padding: 10px;
-    margin-bottom: 15px;
+    font-size: 11.5px;
+    border: 1px solid #cbd5e1;
+    padding: 6px;
+    margin-bottom: 10px;
     text-align: center;
-    background-color: #fafafa;
+    background-color: #f8fafc;
+    color: #475569;
 }
 
 /* بخش امضاها */
 .signatures {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-    height: 120px;
+    margin-top: 10px;
+    height: 105px;
     text-align: center;
     font-weight: bold;
 }
 
 .signature-box {
     width: 48%;
-    border: 1px solid #000;
+    border: 1px solid #94a3b8;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-bottom: 8px;
+    padding-bottom: 6px;
     background-color: #fff;
+    border-radius: 4px;
 }
 
 .buyer-sign {
     justify-content: flex-end;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
+    font-size: 13px;
+    color: #334155;
 }
 
 .seller-sign {
@@ -202,40 +208,55 @@ input::-webkit-inner-spin-button {
 
 /* دکمه‌ها */
 .print-btn {
-    background-color: #28a745;
+    background-color: #0284c7;
     color: white;
-    padding: 12px 20px;
+    padding: 10px 20px;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
     width: 100%;
-    margin-top: 15px;
-    font-family: 'Yekan Bakh', Tahoma;
-    border-radius: 4px;
+    margin-top: 10px;
+    font-family: 'Vazirmatn', Tahoma;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.print-btn:hover {
+    background-color: #0369a1;
 }
 
 button.no-print {
-    background-color: #007bff;
+    background-color: #475569;
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 6px 12px;
     cursor: pointer;
     border-radius: 4px;
-    margin-bottom: 10px;
-    font-family: 'Yekan Bakh', Tahoma;
+    margin-bottom: 8px;
+    font-family: 'Vazirmatn', Tahoma;
 }
 
-/* تنظیمات پرینت و خروجی PDF */
+button.no-print:hover {
+    background-color: #334155;
+}
+
+/* 🌟 تنظیمات پرینت برای قرارگیری دقیق در یک صفحه (تک‌صفحه‌ای A4) */
 @media print {
+    @page {
+        size: A4 portrait;
+        margin: 6mm;
+    }
     body {
         background-color: #fff;
         padding: 0;
+        margin: 0;
     }
     .invoice-box {
         border: none;
         box-shadow: none;
         padding: 0;
-        max-width: 100%;
+        max-width: 100% !important;
+        width: 100% !important;
     }
     .no-print {
         display: none !important;
