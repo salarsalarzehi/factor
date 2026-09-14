@@ -1,7 +1,19 @@
 // تابع تبدیل اعداد انگلیسی به فارسی
 function toPersianNum(num) {
+    if (num === null || num === undefined) return "۰";
     const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     return num.toString().replace(/\d/g, x => farsiDigits[x]);
+}
+
+// تابع تبدیل اعداد فارسی به انگلیسی (برای محاسبات پشت صحنه)
+function toEnglishNum(str) {
+    if (!str) return "";
+    const persianDigits = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
+    let englishStr = str.toString();
+    for (let i = 0; i < 10; i++) {
+        englishStr = englishStr.replace(persianDigits[i], i);
+    }
+    return englishStr;
 }
 
 // تابع جداکننده هزارگان و تبدیل به ارقام فارسی
@@ -22,10 +34,14 @@ function calculate() {
         let qtyInput = row.querySelector(".qty");
         let discountInput = row.querySelector(".discount");
         
-        let rawPrice = priceInput.value.replace(/,/g, '');
+        // پاکسازی کاماها و تبدیل اعداد فارسی احتمالی به انگلیسی برای انجام محاسبه ریاضی
+        let rawPrice = toEnglishNum(priceInput.value.replace(/,/g, ''));
+        let rawQty = toEnglishNum(qtyInput.value);
+        let rawDiscount = toEnglishNum(discountInput.value);
+
         let price = parseFloat(rawPrice) || 0;
-        let qty = parseFloat(qtyInput.value) || 0;
-        let discount = parseFloat(discountInput.value) || 0;
+        let qty = parseFloat(rawQty) || 0;
+        let discount = parseFloat(rawDiscount) || 0;
         
         let total = (price * qty) - discount;
         row.querySelector(".row-total").innerText = formatNumber(total);
@@ -40,16 +56,21 @@ function calculate() {
     document.getElementById("grand-total").innerText = formatNumber(grandTotal);
 }
 
-// مدیریت کاماسازی زنده هنگام تایپ در فیلد قیمت
+// مدیریت هوشمند ورود اعداد، کاماسازی قیمت و تبدیل خودکار به ارقام فارسی
 document.addEventListener("input", function(e) {
     if (e.target.classList.contains("price")) {
-        let val = e.target.value.replace(/,/g, '');
+        let val = toEnglishNum(e.target.value.replace(/,/g, ''));
         if (!isNaN(val) && val !== "") {
-            e.target.value = Number(val).toLocaleString();
+            // اعمال کاما و تبدیل به ارقام فارسی به صورت همزمان
+            let formatted = Number(val).toLocaleString();
+            e.target.value = toPersianNum(formatted);
         }
         calculate();
     }
-    if (e.target.classList.contains("qty") || e.target.classList.contains("discount")) {
+    else if (e.target.classList.contains("qty") || e.target.classList.contains("discount")) {
+        let val = toEnglishNum(e.target.value);
+        // تبدیل ارقام تایپ شده (چه با بالای کیبورد چه سمت راست) به فارسی
+        e.target.value = toPersianNum(val);
         calculate();
     }
 });
@@ -64,8 +85,8 @@ function addRow() {
         <td>${toPersianNum(rowCount)}</td>
         <td><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول..."></td>
         <td><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
-        <td><input type="number" class="qty fillable-field" value="1" placeholder="۱"></td>
-        <td><input type="number" class="discount fillable-field" value="" placeholder="۰"></td>
+        <td><input type="text" class="qty fillable-field" value="" placeholder="۱"></td>
+        <td><input type="text" class="discount fillable-field" value="" placeholder="۰"></td>
         <td class="row-total">۰</td>
     `;
     tbody.appendChild(newRow);
