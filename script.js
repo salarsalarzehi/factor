@@ -12,7 +12,7 @@ function formatNumber(num) {
     return toPersianNum(parts.join("."));
 }
 
-// تابع محاسبه مبالغ، مالیات و جمع کل
+// تابع محاسبه مبالغ، مالیات و جمع کل همراه با فرمت‌دهی فیلد فی
 function calculate() {
     let rows = document.querySelectorAll("#items-body tr");
     let subTotal = 0;
@@ -22,7 +22,9 @@ function calculate() {
         let qtyInput = row.querySelector(".qty");
         let discountInput = row.querySelector(".discount");
         
-        let price = parseFloat(priceInput.value) || 0;
+        // پاک کردن کاماها برای محاسبه دقیق ریاضی
+        let rawPrice = priceInput.value.replace(/,/g, '');
+        let price = parseFloat(rawPrice) || 0;
         let qty = parseFloat(qtyInput.value) || 0;
         let discount = parseFloat(discountInput.value) || 0;
         
@@ -39,6 +41,17 @@ function calculate() {
     document.getElementById("grand-total").innerText = formatNumber(grandTotal);
 }
 
+// رویداد برای جداکننده کاما هنگام تایپ در فیلد فی
+document.addEventListener("input", function(e) {
+    if (e.target.classList.contains("price")) {
+        let val = e.target.value.replace(/,/g, '');
+        if (!isNaN(val) && val !== "") {
+            e.target.value = Number(val).toLocaleString();
+        }
+        calculate();
+    }
+});
+
 // تابع افزودن سطر جدید به جدول کالاها
 function addRow() {
     let tbody = document.getElementById("items-body");
@@ -47,8 +60,8 @@ function addRow() {
     let newRow = document.createElement("tr");
     newRow.innerHTML = `
         <td>${toPersianNum(rowCount)}</td>
-        <td><textarea class="item-desc" placeholder="شرح کالا"></textarea></td>
-        <td><input type="number" class="price" value="0" oninput="calculate()"></td>
+        <td><input type="text" class="item-desc" value="" placeholder="شرح کالا"></td>
+        <td><input type="text" class="price" value="0"></td>
         <td><input type="number" class="qty" value="1" oninput="calculate()"></td>
         <td><input type="number" class="discount" value="0" oninput="calculate()"></td>
         <td class="row-total">۰</td>
@@ -58,5 +71,11 @@ function addRow() {
 
 // اجرای محاسبات اولیه هنگام بارگذاری کامل صفحه
 window.onload = function() {
+    // اعمال فرمت روی قیمت اولیه موجود در صفحه
+    let initialPrice = document.querySelector(".price");
+    if(initialPrice) {
+        let val = initialPrice.value.replace(/,/g, '');
+        initialPrice.value = Number(val).toLocaleString();
+    }
     calculate();
 };
