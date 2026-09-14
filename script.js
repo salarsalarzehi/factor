@@ -47,7 +47,7 @@ function addRow() {
     let newRow = document.createElement("tr");
     newRow.innerHTML = `
         <td>${toPersianNum(rowCount)}</td>
-        <td><input type="text" placeholder="شرح کالا"></td>
+        <td><input type="textarea" placeholder="شرح کالا"></td>
         <td><input type="number" class="price" value="0" oninput="calculate()"></td>
         <td><input type="number" class="qty" value="1" oninput="calculate()"></td>
         <td><input type="number" class="discount" value="0" oninput="calculate()"></td>
