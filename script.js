@@ -52,7 +52,6 @@ document.addEventListener("input", function(e) {
     }
 });
 
-// تابع افزودن سطر جدید به جدول کالاها
 function addRow() {
     let tbody = document.getElementById("items-body");
     let rowCount = tbody.rows.length + 1;
