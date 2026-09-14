@@ -19,35 +19,53 @@ body {
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
+/* تنظیمات هدر برای قرارگیری شماره و تاریخ روبه‌روی عنوان */
 .invoice-header {
     text-align: center;
     border-bottom: 2px solid #1e293b;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     margin-bottom: 12px;
 }
 
 .invoice-header h2 {
-    margin: 0 0 3px 0;
-    font-size: 20px;
+    margin: 0 0 6px 0;
+    font-size: 19px;
     color: #1e293b;
     font-weight: bold;
 }
 
-.invoice-header p {
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.invoice-title {
     margin: 0;
     font-size: 15px;
     color: #0284c7;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
-.invoice-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 8px;
+.inv-info {
     font-size: 13px;
     font-weight: bold;
     color: #475569;
+}
+
+.inv-info input {
+    width: 65px;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    color: #0f172a;
+    background-color: #f8fafc;
+    border: 1px dashed #cbd5e1 !important;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-family: 'Vazirmatn', Tahoma;
 }
 
 table {
@@ -270,5 +288,9 @@ button.no-print {
     .fillable-field {
         background-color: transparent !important;
         border: none !important;
+    }
+    .inv-info input {
+        border: none !important;
+        background: transparent !important;
     }
 }
