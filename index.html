@@ -28,21 +28,21 @@
             </tr>
             <tr>
                 <td class="label">آدرس:</td>
-                <colspan="3">تهران جنت آباد، میدان چهارباغ، ۱۶ متری دوم | شناسه ملی: ۱۴۰۱۲۵۵۶۹۲۶</td>
+                <td colspan="3">تهران جنت آباد، میدان چهارباغ، ۱۶ متری دوم | شناسه ملی: ۱۴۰۱۲۵۵۶۹۲۶</td>
             </tr>
             <tr>
                 <td class="label">خریدار:</td>
-                <td><input type="text" id="buyer-name" value="محسن اسدی"></td>
+                <td><input type="text" id="buyer-name" class="fillable-field" placeholder="نام خریدار را وارد کنید"></td>
                 <td class="label">تلفن:</td>
-                <td><input type="text" id="buyer-phone" value="۹۱۰۳۶۴۳۴۱۸"></td>
+                <td><input type="text" id="buyer-phone" class="fillable-field" placeholder="تلفن خریدار"></td>
             </tr>
             <tr>
                 <td class="label">آدرس:</td>
-                <colspan="3"><input type="text" id="buyer-address" placeholder="آدرس خریدار را وارد کنید"></td>
+                <td colspan="3"><input type="text" id="buyer-address" class="fillable-field" placeholder="آدرس کامل خریدار"></td>
             </tr>
         </table>
 
-        <!-- جدول محصولات -->
+        <!-- جدول محصولات (کاملاً خام) -->
         <table class="items-table" id="items-table">
             <thead>
                 <tr>
@@ -57,11 +57,11 @@
             <tbody id="items-body">
                 <tr>
                     <td>۱</td>
-                    <td><input type="text" value="کفپوش عایق برق مقاوم تا ۳۶۰۰۰ ولت با تاییدیه رسمی کلاس ۰"></td>
-                    <td><input type="number" class="price" value="58000000" oninput="calculate()"></td>
-                    <td><input type="number" class="qty" value="1" oninput="calculate()"></td>
-                    <td><input type="number" class="discount" value="0" oninput="calculate()"></td>
-                    <td class="row-total">۵۸,۰۰۰,۰۰۰</td>
+                    <td><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول..."></td>
+                    <td><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
+                    <td><input type="number" class="qty fillable-field" value="" placeholder="۱"></td>
+                    <td><input type="number" class="discount fillable-field" value="" placeholder="۰"></td>
+                    <td class="row-total">۰</td>
                 </tr>
             </tbody>
         </table>
@@ -72,15 +72,15 @@
         <table class="totals-table">
             <tr>
                 <td>جمع کل:</td>
-                <td id="sub-total">۵۸,۰۰۰,۰۰۰</td>
+                <td id="sub-total">۰</td>
             </tr>
             <tr>
                 <td>مالیات بر ارزش افزوده (۱۰٪):</td>
-                <td id="tax-amount">۵,۸۰۰,۰۰۰</td>
+                <td id="tax-amount">۰</td>
             </tr>
             <tr class="grand-total-row">
                 <td>مبلغ قابل پرداخت:</td>
-                <td id="grand-total">۶۳,۸۰۰,۰۰۰</td>
+                <td id="grand-total">۰</td>
             </tr>
         </table>
 
@@ -88,12 +88,11 @@
             صورتحساب رسمی پس از تأیید نهایی پیش‌فاکتور توسط خریدار صادر و در سامانه مؤدیان ثبت خواهد شد.
         </div>
 
-<div class="signatures">
+        <div class="signatures">
             <div class="signature-box buyer-sign">
                 <span>خریدار</span>
             </div>
             <div class="signature-box seller-sign">
-                <!-- تصویر مهر و امضا به عنوان پس‌زمینه و ساختار تمیز -->
                 <div class="stamp-container">
                     <img src="sign.png" alt="مهر و امضا" class="sign-img">
                 </div>
