@@ -12,7 +12,7 @@ function formatNumber(num) {
     return toPersianNum(parts.join("."));
 }
 
-// تابع محاسبه مبالغ، مالیات و جمع کل همراه با فرمت‌دهی فیلد فی
+// تابع محاسبه مبالغ، مالیات و جمع کل
 function calculate() {
     let rows = document.querySelectorAll("#items-body tr");
     let subTotal = 0;
@@ -22,7 +22,6 @@ function calculate() {
         let qtyInput = row.querySelector(".qty");
         let discountInput = row.querySelector(".discount");
         
-        // پاک کردن کاماها برای محاسبه دقیق ریاضی
         let rawPrice = priceInput.value.replace(/,/g, '');
         let price = parseFloat(rawPrice) || 0;
         let qty = parseFloat(qtyInput.value) || 0;
@@ -41,7 +40,7 @@ function calculate() {
     document.getElementById("grand-total").innerText = formatNumber(grandTotal);
 }
 
-// رویداد برای جداکننده کاما هنگام تایپ در فیلد فی
+// مدیریت کاماسازی زنده هنگام تایپ در فیلد قیمت
 document.addEventListener("input", function(e) {
     if (e.target.classList.contains("price")) {
         let val = e.target.value.replace(/,/g, '');
@@ -50,8 +49,12 @@ document.addEventListener("input", function(e) {
         }
         calculate();
     }
+    if (e.target.classList.contains("qty") || e.target.classList.contains("discount")) {
+        calculate();
+    }
 });
 
+// تابع افزودن سطر جدید به جدول کالاها
 function addRow() {
     let tbody = document.getElementById("items-body");
     let rowCount = tbody.rows.length + 1;
@@ -59,22 +62,16 @@ function addRow() {
     let newRow = document.createElement("tr");
     newRow.innerHTML = `
         <td>${toPersianNum(rowCount)}</td>
-        <td><input type="text" class="item-desc" value="" placeholder="شرح کالا"></td>
-        <td><input type="text" class="price" value="0"></td>
-        <td><input type="number" class="qty" value="1" oninput="calculate()"></td>
-        <td><input type="number" class="discount" value="0" oninput="calculate()"></td>
+        <td><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول..."></td>
+        <td><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
+        <td><input type="number" class="qty fillable-field" value="1" placeholder="۱"></td>
+        <td><input type="number" class="discount fillable-field" value="" placeholder="۰"></td>
         <td class="row-total">۰</td>
     `;
     tbody.appendChild(newRow);
 }
 
-// اجرای محاسبات اولیه هنگام بارگذاری کامل صفحه
+// اجرای محاسبات اولیه هنگام بارگذاری صفحه
 window.onload = function() {
-    // اعمال فرمت روی قیمت اولیه موجود در صفحه
-    let initialPrice = document.querySelector(".price");
-    if(initialPrice) {
-        let val = initialPrice.value.replace(/,/g, '');
-        initialPrice.value = Number(val).toLocaleString();
-    }
     calculate();
 };
