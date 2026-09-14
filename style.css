@@ -95,22 +95,78 @@ input[type="text"], input[type="number"] {
     text-align: center;
 }
 
+/* بخش امضاها و تنظیمات مهر و امضا */
 .signatures {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
-    height: 80px;
+    margin-top: 20px;
+    height: 110px;
     text-align: center;
     font-weight: bold;
 }
 
-.signatures div {
+.signature-box {
     width: 45%;
     border: 1px solid #000;
-    padding-top: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 8px;
+    background-color: #fff;
 }
 
-/* تنظیمات حالت پرینت (مخفی کردن دکمه‌ها و کادر صفحه) */
+.buyer-sign {
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+
+.seller-sign {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    overflow: hidden;
+}
+
+.stamp-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.sign-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* حذف پس‌زمینه سفید احتمالی دور عکس و تمیز نشستن روی کادر */
+}
+
+/* دکمه‌ها */
+.print-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button.no-print {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* تنظیمات حالت پرینت و خروجی PDF */
 @media print {
     body {
         background-color: #fff;
@@ -129,15 +185,4 @@ input[type="text"], input[type="number"] {
         border: none !important;
         outline: none !important;
     }
-}
-
-.print-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    margin-top: 10px;
 }
