@@ -298,21 +298,23 @@ button.no-print {
 /* 📱 تنظیمات واکنش‌گرا (Responsive) برای نمایش بی‌نقص در موبایل */
 @media screen and (max-width: 768px) {
     body {
-        padding: 4px;
+        padding: 0;
+        margin: 0;
+        overflow-x: hidden; /* جلوگیری کامل از اسکرول افقی */
     }
 
     .invoice-box {
-        padding: 10px;
-        border-radius: 4px;
+        padding: 8px;
+        border-radius: 0;
         box-shadow: none;
         border: none;
-        width: 100%;
+        width: 100% !important;
         box-sizing: border-box;
     }
 
     /* هدر در موبایل */
     .invoice-header h2 {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .header-row {
@@ -358,7 +360,7 @@ button.no-print {
         font-size: 11px;
     }
 
-    /* تبدیل جدول اقلام کالا به کارت‌های عمودی کاملاً مرتب */
+    /* تبدیل جدول اقلام کالا به کارت‌های عمودی تمام‌عرض */
     .items-table thead {
         display: none; 
     }
@@ -374,28 +376,25 @@ button.no-print {
         border: 1px solid #cbd5e1;
         border-radius: 6px;
         margin-bottom: 10px;
-        padding: 6px;
+        padding: 8px;
     }
 
+    /* هر فیلد به صورت بلوکی و تمام‌عرض زیر برچسب خودش قرار می‌گیرد */
     .items-table td {
         border: none !important;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 8px;
+        display: block;
+        width: 100% !important;
+        padding: 4px 0;
         font-size: 12px;
-        border-bottom: 1px dashed #e2e8f0 !important;
+        text-align: right !important;
     }
 
-    .items-table td:last-child {
-        border-bottom: none !important;
-    }
-
-    /* چیدمان دقیق برچسب و فیلد در موبایل به صورت روبه‌روی هم */
     .items-table td::before {
+        display: block;
         font-weight: bold;
         color: #475569;
-        flex-shrink: 0;
+        margin-bottom: 2px;
+        font-size: 11px;
     }
 
     .items-table td:nth-child(1):before { content: "شماره ردیف:"; }
@@ -405,14 +404,16 @@ button.no-print {
     .items-table td:nth-child(5):before { content: "تخفیف:"; }
     .items-table td:nth-child(6):before { content: "مبلغ کل:"; }
 
+    /* تمام‌عرض شدن فیلدها دقیقاً مثل بخش خریدار */
     .items-table input {
-        text-align: left !important;
-        width: 65% !important;
+        text-align: right !important;
+        width: 100% !important;
+        box-sizing: border-box;
         background: #fff !important;
         border: 1px solid #cbd5e1 !important;
-        padding: 4px 6px;
+        padding: 6px;
         border-radius: 3px;
-        font-size: 12px;
+        font-size: 13px;
     }
 
     /* جداول جمع کل و امضاها در موبایل */
@@ -422,7 +423,7 @@ button.no-print {
 
     .totals-table td {
         font-size: 12px;
-        padding: 5px;
+        padding: 6px;
     }
 
     .signatures {
