@@ -1,6 +1,5 @@
-@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css'); /* پشتیبان */
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
 
-/* تعریف فونت یکان بخ */
 @font-face {
     font-family: 'Yekan Bakh';
     src: url('https://cdn.jsdelivr.net/gh/amin-ahmadi/yekan-bakh-font@master/fonts/woff2/YekanBakh-Regular.woff2') format('woff2');
@@ -24,25 +23,38 @@ body {
 }
 
 .invoice-box {
-    max-width: 800px;
+    max-width: 850px;
     margin: auto;
     background: #fff;
-    padding: 20px;
+    padding: 25px;
     border: 2px solid #000;
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
 }
 
 .invoice-header {
     text-align: center;
     border-bottom: 2px solid #000;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     margin-bottom: 15px;
+}
+
+.invoice-header h2 {
+    margin: 0 0 5px 0;
+    font-size: 22px;
+}
+
+.invoice-header p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .invoice-meta {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 table {
@@ -56,7 +68,7 @@ table, th, td {
 }
 
 th, td {
-    padding: 8px;
+    padding: 10px 8px;
     text-align: center;
     font-size: 14px;
     font-family: 'Yekan Bakh', Tahoma, sans-serif;
@@ -66,6 +78,14 @@ th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
+
+/* تنظیم پهنای ستون‌های جدول کالاها برای خوانایی بهتر شرح کالا */
+.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 6%; }  /* ردیف */
+.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 40%; text-align: right; } /* شرح کالا (بزرگ و راست‌چین) */
+.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 18%; } /* فی */
+.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 8%; }  /* تعداد */
+.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 12%; } /* تخفیف */
+.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 16%; } /* مبلغ */
 
 .parties-table td {
     text-align: right;
@@ -77,20 +97,28 @@ th {
     background-color: #f9f9f9;
 }
 
-input[type="text"], input[type="number"] {
-    width: 95%;
+input[type="text"], input[type="number"], textarea {
+    width: 96%;
     border: none;
     font-family: 'Yekan Bakh', Tahoma;
     font-size: 14px;
-    text-align: center;
     background: transparent;
+    outline: none;
+}
+
+/* استایل مخصوص شرح کالا برای پشتیبانی از متن‌های طولانی */
+textarea.item-desc {
+    resize: vertical;
+    height: 35px;
+    line-height: 1.4;
+    text-align: right;
+    padding: 2px;
 }
 
 .parties-table input {
     text-align: right;
 }
 
-/* جلوگیری از ظاهر شدن فلزهای افزایش/کاهش عدد در اینپوت‌های قیمت */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -98,14 +126,14 @@ input::-webkit-inner-spin-button {
 }
 
 .totals-table {
-    width: 40%;
+    width: 45%;
     margin-left: 0;
     margin-right: auto;
 }
 
 .totals-table td {
     text-align: left;
-    padding: 6px 10px;
+    padding: 8px 12px;
 }
 
 .totals-table td:first-child {
@@ -115,11 +143,12 @@ input::-webkit-inner-spin-button {
 }
 
 .invoice-footer-note {
-    font-size: 12px;
+    font-size: 13px;
     border: 1px solid #000;
-    padding: 8px;
+    padding: 10px;
     margin-bottom: 15px;
     text-align: center;
+    background-color: #fafafa;
 }
 
 /* بخش امضاها */
@@ -127,13 +156,13 @@ input::-webkit-inner-spin-button {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-    height: 110px;
+    height: 120px;
     text-align: center;
     font-weight: bold;
 }
 
 .signature-box {
-    width: 45%;
+    width: 48%;
     border: 1px solid #000;
     position: relative;
     display: flex;
@@ -175,27 +204,28 @@ input::-webkit-inner-spin-button {
 .print-btn {
     background-color: #28a745;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     cursor: pointer;
     font-size: 16px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
     font-family: 'Yekan Bakh', Tahoma;
+    border-radius: 4px;
 }
 
 button.no-print {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 6px 12px;
+    padding: 8px 15px;
     cursor: pointer;
     border-radius: 4px;
     margin-bottom: 10px;
     font-family: 'Yekan Bakh', Tahoma;
 }
 
-/* تنظیمات پرینت */
+/* تنظیمات پرینت و خروجی PDF */
 @media print {
     body {
         background-color: #fff;
@@ -210,8 +240,9 @@ button.no-print {
     .no-print {
         display: none !important;
     }
-    input {
+    input, textarea {
         border: none !important;
         outline: none !important;
+        background: transparent !important;
     }
 }
