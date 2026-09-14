@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>صدور پیش‌فاکتور</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="invoice-box">
+        <!-- هدر پیش‌فاکتور -->
+        <div class="invoice-header">
+            <h2>شرکت مهندسی و تامین پتروکاوان انرژی</h2>
+            <p>پیش فاکتور</p>
+            <div class="invoice-meta">
+                <span>تاریخ: <input type="text" id="inv-date" value="۱۴۰۵/۰۶/۲۳"></span>
+                <span>شماره: <input type="text" id="inv-number" value="۱۰۰۲"></span>
+            </div>
+        </div>
+
+        <!-- اطلاعات فروشنده و خریدار -->
+        <table class="parties-table">
+            <tr>
+                <td class="label">فروشنده:</td>
+                <td>شرکت مهندسی و تامین پتروکاوان انرژی</td>
+                <td class="label">تلفن:</td>
+                <td>۹۱۲۷۲۰۴۵۳۵</td>
+            </tr>
+            <tr>
+                <td class="label">آدرس:</td>
+                <colspan="3">تهران جنت آباد، میدان چهارباغ، ۱۶ متری دوم | شناسه ملی: ۱۴۰۱۲۵۵۶۹۲۶</td>
+            </tr>
+            <tr>
+                <td class="label">خریدار:</td>
+                <td><input type="text" id="buyer-name" value="محسن اسدی"></td>
+                <td class="label">تلفن:</td>
+                <td><input type="text" id="buyer-phone" value="۹۱۰۳۶۴۳۴۱۸"></td>
+            </tr>
+            <tr>
+                <td class="label">آدرس:</td>
+                <colspan="3"><input type="text" id="buyer-address" placeholder="آدرس خریدار را وارد کنید"></td>
+            </tr>
+        </table>
+
+        <!-- جدول محصولات -->
+        <table class="items-table" id="items-table">
+            <thead>
+                <tr>
+                    <th>ردیف</th>
+                    <th>شرح کالا</th>
+                    <th>فی (ریال)</th>
+                    <th>تعداد</th>
+                    <th>تخفیف</th>
+                    <th>مبلغ (ریال)</th>
+                </tr>
+            </thead>
+            <tbody id="items-body">
+                <tr>
+                    <td>۱</td>
+                    <td><input type="text" value="کفپوش عایق برق مقاوم تا ۳۶۰۰۰ ولت با تاییدیه رسمی کلاس ۰"></td>
+                    <td><input type="number" class="price" value="58000000" oninput="calculate()"></td>
+                    <td><input type="number" class="qty" value="1" oninput="calculate()"></td>
+                    <td><input type="number" class="discount" value="0" oninput="calculate()"></td>
+                    <td class="row-total">۵۸,۰۰۰,۰۰۰</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="addRow()" class="no-print">+ افزودن کالا</button>
+
+        <!-- جمع کل و مالیات -->
+        <table class="totals-table">
+            <tr>
+                <td>جمع کل:</td>
+                <td id="sub-total">۵۸,۰۰۰,۰۰۰</td>
+            </tr>
+            <tr>
+                <td>مالیات بر ارزش افزوده (۱۰٪):</td>
+                <td id="tax-amount">۵,۸۰۰,۰۰۰</td>
+            </tr>
+            <tr class="grand-total-row">
+                <td>مبلغ قابل پرداخت:</td>
+                <td id="grand-total">۶۳,۸۰۰,۰۰۰</td>
+            </tr>
+        </table>
+
+        <div class="invoice-footer-note">
+            صورتحساب رسمی پس از تأیید نهایی پیش‌فاکتور توسط خریدار صادر و در سامانه مؤدیان ثبت خواهد شد.
+        </div>
+
+        <div class="signatures">
+            <div>فروشنده (مهر و امضا)</div>
+            <div>خریدار</div>
+        </div>
+
+        <button onclick="window.print()" class="no-print print-btn">چاپ / ذخیره PDF</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
