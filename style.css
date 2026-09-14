@@ -1,5 +1,22 @@
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css'); /* پشتیبان */
+
+/* تعریف فونت یکان بخ */
+@font-face {
+    font-family: 'Yekan Bakh';
+    src: url('https://cdn.jsdelivr.net/gh/amin-ahmadi/yekan-bakh-font@master/fonts/woff2/YekanBakh-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Yekan Bakh';
+    src: url('https://cdn.jsdelivr.net/gh/amin-ahmadi/yekan-bakh-font@master/fonts/woff2/YekanBakh-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
-    font-family: Tahoma, Arial, sans-serif;
+    font-family: 'Yekan Bakh', Tahoma, Arial, sans-serif;
     background-color: #f0f0f0;
     direction: rtl;
     margin: 0;
@@ -41,11 +58,13 @@ table, th, td {
 th, td {
     padding: 8px;
     text-align: center;
-    font-size: 13px;
+    font-size: 14px;
+    font-family: 'Yekan Bakh', Tahoma, sans-serif;
 }
 
 th {
     background-color: #f2f2f2;
+    font-weight: bold;
 }
 
 .parties-table td {
@@ -61,14 +80,21 @@ th {
 input[type="text"], input[type="number"] {
     width: 95%;
     border: none;
-    font-family: Tahoma;
-    font-size: 13px;
+    font-family: 'Yekan Bakh', Tahoma;
+    font-size: 14px;
     text-align: center;
     background: transparent;
 }
 
 .parties-table input {
     text-align: right;
+}
+
+/* جلوگیری از ظاهر شدن فلزهای افزایش/کاهش عدد در اینپوت‌های قیمت */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .totals-table {
@@ -85,6 +111,7 @@ input[type="text"], input[type="number"] {
 .totals-table td:first-child {
     font-weight: bold;
     background-color: #f9f9f9;
+    text-align: right;
 }
 
 .invoice-footer-note {
@@ -95,7 +122,7 @@ input[type="text"], input[type="number"] {
     text-align: center;
 }
 
-/* بخش امضاها و تنظیمات مهر و امضا */
+/* بخش امضاها */
 .signatures {
     display: flex;
     justify-content: space-between;
@@ -141,7 +168,7 @@ input[type="text"], input[type="number"] {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    mix-blend-mode: multiply; /* حذف پس‌زمینه سفید احتمالی دور عکس و تمیز نشستن روی کادر */
+    mix-blend-mode: multiply;
 }
 
 /* دکمه‌ها */
@@ -154,6 +181,7 @@ input[type="text"], input[type="number"] {
     font-size: 16px;
     width: 100%;
     margin-top: 10px;
+    font-family: 'Yekan Bakh', Tahoma;
 }
 
 button.no-print {
@@ -164,9 +192,10 @@ button.no-print {
     cursor: pointer;
     border-radius: 4px;
     margin-bottom: 10px;
+    font-family: 'Yekan Bakh', Tahoma;
 }
 
-/* تنظیمات حالت پرینت و خروجی PDF */
+/* تنظیمات پرینت */
 @media print {
     body {
         background-color: #fff;
