@@ -309,3 +309,17 @@ body {
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 70px; }
 }
+/* استایل عکس مهر و امضا */
+.sign-image-container {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.sign-img {
+    max-height: 55px;
+    max-width: 100%;
+    object-fit: contain;
+}
