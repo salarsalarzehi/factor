@@ -21,7 +21,7 @@ function formatNumber(num) {
     return toPersianNum(parts.join("."));
 }
 
-// تابع تبدیل عدد به حروف فارسی
+// تابع دقیق تبدیل عدد به حروف فارسی
 function NumberToWords(n) {
     if (n === 0 || isNaN(n)) return "صفر ریال";
     if (n < 0) n = Math.abs(n);
@@ -92,17 +92,22 @@ function calculate() {
         subTotal += total;
     });
 
-    let tax = subTotal * 0.10;
+    let tax = subTotal * 0.10; // ۱۰ درصد مالیات
     let grandTotal = subTotal + tax;
 
     document.getElementById("sub-total").innerText = formatNumber(subTotal);
     document.getElementById("tax-amount").innerText = formatNumber(tax);
     document.getElementById("grand-total").innerText = formatNumber(grandTotal);
     
-    // انتقال اتوماتیک مبلغ به حروف در فیلد مربوطه
-    document.getElementById("grand-total-words").value = NumberToWords(Math.round(grandTotal));
+    // تبدیل خودکار مبلغ کل به حروف فارسی و قرار دادن در فیلد مربوطه
+    let wordsResult = NumberToWords(Math.round(grandTotal));
+    let wordsInput = document.getElementById("grand-total-words");
+    if (wordsInput) {
+        wordsInput.value = wordsResult;
+    }
 }
 
+// گوش دادن به تغییرات قیمت، تعداد و تخفیف برای به‌روزرسانی لحظه‌ای
 document.addEventListener("input", function(e) {
     if (e.target.classList.contains("price") || e.target.classList.contains("discount")) {
         let val = toEnglishNum(e.target.value.replace(/,/g, ''));
