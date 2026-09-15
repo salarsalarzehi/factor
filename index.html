@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صورتحساب رسمی فروش کالا و خدمات</title>
+    <title>فاکتور فروش کالا و خدمات - پتروکاوان انرژی</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="invoice-box">
-        <!-- هدر فاکتور -->
+        <!-- هتر فاکتور -->
         <div class="invoice-header">
             <div class="header-row">
                 <div class="invoice-title">
-                    <h2>صورتحساب فروش کالا و خدمات</h2>
-                    <span class="sub-title">(موضوع ماده ۱۶ قانون پایانه های فروشگاهی و سامانه مودیان)</span>
+                    <h2>شرکت مهندسی و تامین پتروکاوان انرژی</h2>
+                    <span class="sub-title">فاکتور فروش کالا و خدمات</span>
                 </div>
                 <div class="inv-number-box">
                     <label>شماره:</label>
@@ -118,22 +118,29 @@
         <!-- جداول جمع کل و مالیات -->
         <table class="totals-table">
             <tr>
-                <td class="label" style="width: 70%;">جمع کل پس از تخفیف:</td>
-                <td id="sub-total" style="width: 30%;">۰</td>
+                <td class="label" style="width: 65%;">جمع کل پس از تخفیف:</td>
+                <td id="sub-total" style="width: 35%;">۰</td>
             </tr>
             <tr>
                 <td class="label">جمع مالیات و عوارض (۱۰٪):</td>
                 <td id="tax-amount">۰</td>
             </tr>
             <tr class="grand-total-row">
-                <td class="label">جمع مبلغ کل به‌لاوه مالیات و عوارض (مبلغ قابل پرداخت):</td>
+                <td class="label">جمع مبلغ کل بعلاوه مالیات و عوارض (مبلغ قابل پرداخت):</td>
                 <td id="grand-total">۰</td>
+            </tr>
+            <!-- ردیف مبلغ کل به حروف با قابلیت ویرایش -->
+            <tr>
+                <td class="label" style="background-color: #f8fafc; font-size: 11px;">مبلغ کل به حروف:</td>
+                <td>
+                    <input type="text" id="grand-total-words" class="fillable-field" style="font-weight: bold; color: #15803d; font-size: 11px; text-align: center;" value="صفر ریال">
+                </td>
             </tr>
         </table>
 
         <!-- توضیحات و امضاها -->
         <div class="footer-note">
-            <p>صورتحساب رسمی پس از تأیید نهایی پیش‌فاکتور توسط خریدار صادر و در سامانه مودیان ثبت خواهد شد.</p>
+            <p>پیش‌فاکتور صادر شده معتبر می‌باشد.</p>
         </div>
 
         <div class="signatures">
