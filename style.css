@@ -347,3 +347,15 @@ body {
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 70px; }
 }
+.words-row td {
+    padding: 6px 10px;
+    vertical-align: middle;
+}
+
+#grand-total-words {
+    width: 100% !important;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
