@@ -119,43 +119,43 @@
 
         <button class="add-btn" onclick="addRow()">+ افزودن کالای جدید</button>
 
-        <!-- جداول جمع کل و مالیات -->
-        <table class="totals-table">
-            <tr>
-                <td class="label" style="width: 65%;">جمع کل پس از تخفیف:</td>
-                <td id="sub-total" style="width: 35%;">۰</td>
-            </tr>
-            <tr>
-                <td class="label">جمع مالیات بر ارزش افزوده (۱۰٪):</td>
-                <td id="tax-amount">۰</td>
-            </tr>
-            <tr class="grand-total-row">
-                <td class="label">جمع مبلغ کل بعلاوه مالیات بر ارزش افزوده:</td>
-                <td id="grand-total">۰</td>
-            </tr>
-        <!-- ردیف مبلغ کل به حروف با قابلیت ویرایش -->
-<tr class="words-row">
-    <td class="label" style="background-color: #f8fafc; font-size: 11px;">مبلغ کل به حروف:</td>
-    <td colspan="3">
-        <input type="text" id="grand-total-words" class="fillable-field" style="font-weight: bold; color: #15803d; font-size: 11px; text-align: right;" value="صفر ریال">
-    </td>
-</tr>
+   <!-- محاسبات و جمع کل -->
+<div class="totals-container">
+    <table class="totals-table">
+        <tr>
+            <td class="label">جمع کل پس از تخفیف:</td>
+            <td id="sub-total">۰</td>
+        </tr>
+        <tr>
+            <td class="label">جمع مالیات بر ارزش افزوده (۱۰٪):</td>
+            <td id="tax-amount">۰</td>
+        </tr>
+        <tr class="grand-total-row">
+            <td class="label">جمع مبلغ کل بعلاوه مالیات بر ارزش افزوده:</td>
+            <td id="grand-total">۰</td>
+        </tr>
+        <!-- ردیف مبلغ به حروف (فقط ۲ ستون دارد که کاملاً جدول را تنظیم می‌کند) -->
+        <tr class="words-row">
+            <td class="label" style="background-color: #f8fafc; font-size: 11px;">مبلغ کل به حروف:</td>
+            <td style="background-color: #fff; text-align: right;">
+                <input type="text" id="grand-total-words" class="fillable-field" style="font-weight: bold; color: #15803d; font-size: 11px; text-align: right;" value="صفر ریال">
+            </td>
+        </tr>
+    </table>
+</div>
 
-    <!-- توضیحات و امضاها -->
-             <div class="signatures">
-            <div class="signature-box">
-                <p>مهر و امضای فروشنده</p>
-                <!-- عکس مهر و امضا (مسیر عکس خودتان را در src وارد کنید یا بگذارید همینطور بماند تا فایل sign.png را کنار کدها قرار دهید) -->
-                <div class="sign-image-container">
-                    <img src="sign.png" alt="مهر و امضا" class="sign-img" onerror="this.style.display='none'">
-                </div>
-            </div>
-            <div class="signature-box">
-                <p>مهر و امضای خریدار</p>
-                <div class="sign-space"></div>
-            </div>
+<!-- بخش مهر و امضا (که حالا پایین‌تر از جدول جمع‌ها قرار می‌گیرد) -->
+<div class="signatures">
+    <div class="signature-box">
+        <p>مهر و امضای فروشنده</p>
+        <div class="sign-image-container">
+            <img src="sign.png" alt="مهر و امضا" class="sign-img">
         </div>
-
+    </div>
+    <div class="signature-box">
+        <p>مهر و امضای خریدار</p>
+    </div>
+</div>
         <!-- دکمه چاپ -->
         <div class="print-container">
             <button onclick="window.print()" class="print-btn">چاپ / ذخیره PDF</button>
