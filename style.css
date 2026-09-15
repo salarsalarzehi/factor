@@ -7,11 +7,11 @@
 
 body {
     font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
-    background-color: #eef2f5;
+    background-color: #f4f6f9;
     direction: rtl;
     margin: 0;
     padding: 15px;
-    color: #333;
+    color: #334155;
 }
 
 .invoice-box {
@@ -21,13 +21,12 @@ body {
     padding: 25px;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     box-sizing: border-box;
 }
 
-/* هدر */
 .invoice-header {
-    border-bottom: 2px solid #0f172a;
+    border-bottom: 2px solid #334155;
     padding-bottom: 15px;
     margin-bottom: 15px;
 }
@@ -43,17 +42,19 @@ body {
 .invoice-title h2 {
     margin: 0;
     font-size: 18px;
-    color: #0f172a;
+    color: #1e293b;
 }
 
 .sub-title {
-    font-size: 11px;
-    color: #64748b;
+    font-size: 13px;
+    color: #475569;
+    font-weight: bold;
 }
 
 .inv-number-box, .inv-date-box {
     font-size: 13px;
     font-weight: bold;
+    color: #475569;
 }
 
 .inv-number-box input, .inv-date-box input {
@@ -63,9 +64,9 @@ body {
     border: 1px solid #cbd5e1;
     border-radius: 4px;
     padding: 3px;
+    color: #334155;
 }
 
-/* جداول اطلاعات فروشنده و خریدار */
 .parties-table {
     width: 100%;
     border-collapse: collapse;
@@ -79,7 +80,7 @@ body {
 }
 
 .parties-table .section-title {
-    background-color: #0f172a;
+    background-color: #334155;
     color: #fff;
     font-weight: bold;
     text-align: center;
@@ -93,14 +94,13 @@ body {
     color: #475569;
 }
 
-/* فیلدهای متنی قابل ویرایش */
 .fillable-field {
     width: 100%;
     border: none;
     background: transparent;
     font-family: inherit;
     font-size: inherit;
-    color: inherit;
+    color: #334155;
     outline: none;
     box-sizing: border-box;
 }
@@ -110,7 +110,6 @@ body {
     border-radius: 3px;
 }
 
-/* جدول اقلام */
 .items-table {
     width: 100%;
     border-collapse: collapse;
@@ -125,8 +124,8 @@ body {
 }
 
 .items-table th {
-    background-color: #f1f5f9;
-    color: #0f172a;
+    background-color: #e2e8f0;
+    color: #1e293b;
     font-weight: bold;
 }
 
@@ -136,10 +135,11 @@ body {
     background: #fff;
     padding: 4px;
     border-radius: 3px;
+    color: #334155;
 }
 
 .items-table input:focus {
-    border-color: #3b82f6;
+    border-color: #64748b;
     background: #fff;
 }
 
@@ -147,9 +147,8 @@ body {
     text-align: right !important;
 }
 
-/* دکمه افزودن */
 .add-btn {
-    background-color: #059669;
+    background-color: #0d9488;
     color: white;
     border: none;
     padding: 6px 14px;
@@ -161,12 +160,11 @@ body {
 }
 
 .add-btn:hover {
-    background-color: #047857;
+    background-color: #0f766e;
 }
 
-/* جدول جمع کل */
 .totals-table {
-    width: 45%;
+    width: 60%;
     margin-right: auto;
     border-collapse: collapse;
     margin-bottom: 15px;
@@ -182,20 +180,20 @@ body {
     background-color: #f8fafc;
     font-weight: bold;
     text-align: right;
+    color: #475569;
 }
 
 .totals-table td:last-child {
-    text-align: center;
     font-weight: bold;
+    color: #1e293b;
 }
 
 .grand-total-row {
-    background-color: #ecfdf5;
-    color: #065f46;
+    background-color: #f0fdf4;
+    color: #166534;
     font-weight: bold;
 }
 
-/* بخش توضیحات و امضاها */
 .footer-note {
     font-size: 11px;
     color: #64748b;
@@ -235,7 +233,7 @@ body {
 }
 
 .print-btn {
-    background-color: #2563eb;
+    background-color: #475569;
     color: white;
     border: none;
     padding: 10px 25px;
@@ -247,10 +245,9 @@ body {
 }
 
 .print-btn:hover {
-    background-color: #1d4ed8;
+    background-color: #334155;
 }
 
-/* تنظیمات پرینت واقعی */
 @media print {
     body {
         background: #fff;
@@ -265,85 +262,35 @@ body {
     .add-btn, .print-btn {
         display: none;
     }
-    .fillable-field, .items-table input {
+    .fillable-field, .items-table input, #grand-total-words {
         border: none !important;
         background: transparent !important;
     }
 }
 
-/* 📱 تنظیمات واکنش‌گرا (Responsive) برای موبایل بدون اسکرول افقی */
 @media screen and (max-width: 768px) {
-    body {
-        padding: 4px;
-        margin: 0;
-        overflow-x: hidden;
-    }
-
-    .invoice-box {
-        padding: 8px;
-        border-radius: 0;
-        box-shadow: none;
-        border: none;
-        width: 100% !important;
-        box-sizing: border-box;
-    }
-
-    .invoice-header h2 {
-        font-size: 15px;
-    }
-
-    .header-row {
-        flex-direction: column;
-        gap: 6px;
-    }
-
+    body { padding: 4px; margin: 0; overflow-x: hidden; }
+    .invoice-box { padding: 8px; border-radius: 0; box-shadow: none; border: none; width: 100% !important; box-sizing: border-box; }
+    .invoice-header h2 { font-size: 15px; }
+    .header-row { flex-direction: column; gap: 6px; }
     .invoice-title { order: 1; text-align: center; }
     .inv-number-box { order: 2; width: 100%; display: flex; justify-content: space-between; }
     .inv-date-box { order: 3; width: 100%; display: flex; justify-content: space-between; }
 
-    /* جدول مشخصات در موبایل */
     .parties-table, .parties-table tbody, .parties-table tr, .parties-table td {
-        display: block;
-        width: 100% !important;
-        box-sizing: border-box;
+        display: block; width: 100% !important; box-sizing: border-box;
     }
-
     .parties-table tr { margin-bottom: 4px; }
     .parties-table td { padding: 5px 8px; text-align: right !important; }
     .parties-table .label { background-color: #f1f5f9; font-size: 11px; width: 100% !important; }
 
-    /* جدول اقلام به صورت کارت‌های تمام عرض در موبایل */
     .items-table thead { display: none; }
     .items-table, .items-table tbody, .items-table tr, .items-table td {
-        display: block;
-        width: 100% !important;
-        box-sizing: border-box;
+        display: block; width: 100% !important; box-sizing: border-box;
     }
-
-    .items-table tr {
-        background: #f8fafc;
-        border: 1px solid #cbd5e1;
-        border-radius: 6px;
-        margin-bottom: 10px;
-        padding: 8px;
-    }
-
-    .items-table td {
-        border: none !important;
-        display: block;
-        width: 100% !important;
-        padding: 4px 0;
-        font-size: 12px;
-        text-align: right !important;
-    }
-
-    .items-table td::before {
-        display: block;
-        font-weight: bold;
-        color: #475569;
-        margin-bottom: 2px;
-        font-size: 11px;
-    }
+    .items-table tr { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 10px; padding: 8px; }
+    .items-table td { border: none !important; display: block; width: 100% !important; padding: 4px 0; font-size: 12px; text-align: right !important; }
+    .items-table td::before { display: block; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
 
     .items-table td:nth-child(1):before { content: "شماره ردیف:"; }
     .items-table td:nth-child(2):before { content: "کد کالا:"; }
@@ -354,34 +301,11 @@ body {
     .items-table td:nth-child(7):before { content: "تخفیف (ریال):"; }
     .items-table td:nth-child(8):before { content: "مبلغ کل (ریال):"; }
 
-    .items-table input {
-        text-align: right !important;
-        width: 100% !important;
-        box-sizing: border-box;
-        background: #fff !important;
-        border: 1px solid #cbd5e1 !important;
-        padding: 6px;
-        border-radius: 3px;
-        font-size: 12px;
-    }
+    .items-table input { text-align: right !important; width: 100% !important; box-sizing: border-box; background: #fff !important; border: 1px solid #cbd5e1 !important; padding: 6px; border-radius: 3px; font-size: 12px; }
 
-    .totals-table {
-        width: 100% !important;
-    }
+    .totals-table { width: 100% !important; }
+    .totals-table td { font-size: 11px; padding: 6px; }
 
-    .totals-table td {
-        font-size: 11px;
-        padding: 6px;
-    }
-
-    .signatures {
-        flex-direction: column;
-        height: auto;
-        gap: 10px;
-    }
-
-    .signature-box {
-        width: 100% !important;
-        height: 70px;
-    }
+    .signatures { flex-direction: column; height: auto; gap: 10px; }
+    .signature-box { width: 100% !important; height: 70px; }
 }
