@@ -3,150 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فاکتور فروش کالا و خدمات - پتروکاوان انرژی</title>
+    <title>پیش‌فاکتور فروش کالا و خدمات - پتروکاوان انرژی</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="invoice-box">
-        <!-- هتر فاکتور -->
+        
+        <!-- هدر فاکتور -->
         <div class="invoice-header">
-            <div class="header-row">
-                <div class="invoice-title">
-                    <h2>شرکت مهندسی و تامین پتروکاوان انرژی</h2>
-                    <span class="sub-title">فاکتور فروش کالا و خدمات</span>
+            <div class="company-info">
+                <h1>شرکت مهندسی و تامین پتروکاوان انرژی (سهامی خاص)</h1>
+                <h2>پیش‌فاکتور فروش کالا و خدمات</h2>
+            </div>
+            <div class="invoice-meta">
+                <div class="meta-row">
+                    <span class="meta-label">شماره:</span>
+                    <span class="meta-value fillable-text" contenteditable="true">۱۴۰۵/۰۰۱</span>
                 </div>
-                <div class="inv-number-box">
-                    <label>شماره:</label>
-                    <input type="text" id="invoice-number" class="fillable-field" value="۱">
-                </div>
-                <div class="inv-date-box">
-                    <label>تاریخ:</label>
-                    <input type="text" id="invoice-date" class="fillable-field" value="۱۴۰۴/۰۶/۲۳">
+                <div class="meta-row">
+                    <span class="meta-label">تاریخ:</span>
+                    <span class="meta-value fillable-text" contenteditable="true">۱۴۰۴/۰۶/۲۳</span>
                 </div>
             </div>
         </div>
 
-        <!-- مشخصات فروشنده -->
-        <table class="parties-table">
-            <tr>
-                <td colspan="4" class="section-title">مشخصات فروشنده</td>
-            </tr>
-            <tr>
-                <td class="label">نام شخص حقیقی / حقوقی:</td>
-                <td><input type="text" class="fillable-field" value="شرکت مهندسی و تامین پتروکاوان انرژی"></td>
-                <td class="label">شماره ثبت / شناسه ملی:</td>
-                <td><input type="text" class="fillable-field" value="----------------"></td>
-            </tr>
-            <tr>
-                <td class="label">کد اقتصادی:</td>
-                <td><input type="text" class="fillable-field" value="----------------"></td>
-                <td class="label">کد پستی ۱۰ رقمی:</td>
-                <td><input type="text" class="fillable-field" value="----------------"></td>
-            </tr>
-            <tr>
-                <td class="label">استان / شهرستان:</td>
-                <td><input type="text" class="fillable-field" value="تهران / تهران"></td>
-                <td class="label">شماره تلفن / نمابر:</td>
-                <td><input type="text" class="fillable-field" value="----------------"></td>
-            </tr>
-            <tr>
-                <td class="label">نشانی کامل:</td>
-                <td colspan="3"><input type="text" class="fillable-field" value="تهران، جنت آباد، ..."></td>
-            </tr>
-        </table>
+        <!-- اطلاعات فروشنده و خریدار -->
+        <div class="parties-container">
+            
+            <!-- مشخصات فروشنده -->
+            <div class="party-box">
+                <div class="party-title">مشخصات فروشنده</div>
+                <table class="party-table">
+                    <tr>
+                        <td class="label">نام شخص حقیقی / حقوقی:</td>
+                        <td class="value">شرکت مهندسی و تامین پتروکاوان انرژی (سهامی خاص)</td>
+                    </tr>
+                    <tr>
+                        <td class="label">شناسه ملی:</td>
+                        <td class="value fillable-text" contenteditable="true">۱۴۰۱۲۵۵۶۹۲۶</td>
+                    </tr>
+                    <tr>
+                        <td class="label">شماره ثبت:</td>
+                        <td class="value">۱۴۰۱۲۵۵۶۹۲۶</td>
+                    </tr>
+                    <tr>
+                        <td class="label">شماره تلفن / نمابر:</td>
+                        <td class="value fillable-text" contenteditable="true">۰۲۱-xxxxxxxx</td>
+                    </tr>
+                    <tr>
+                        <td class="label">استان / شهرستان:</td>
+                        <td class="value">تهران / تهران</td>
+                    </tr>
+                    <tr>
+                        <td class="label">نشانی کامل:</td>
+                        <td class="value">تهران، جنت‌آباد</td>
+                    </tr>
+                </table>
+            </div>
 
-        <!-- مشخصات خریدار -->
-        <table class="parties-table">
-            <tr>
-                <td colspan="4" class="section-title">مشخصات خریدار</td>
-            </tr>
-            <tr>
-                <td class="label">نام شخص حقیقی / حقوقی:</td>
-                <td><input type="text" id="buyer-name" class="fillable-field" placeholder="نام شرکت یا خریدار..."></td>
-                <td class="label">شماره ثبت / شناسه ملی:</td>
-                <td><input type="text" id="buyer-id" class="fillable-field" placeholder="..."></td>
-            </tr>
-            <tr>
-                <td class="label">کد اقتصادی:</td>
-                <td><input type="text" id="buyer-eco" class="fillable-field" placeholder="..."></td>
-                <td class="label">کد پستی ۱۰ رقمی:</td>
-                <td><input type="text" id="buyer-postal" class="fillable-field" placeholder="..."></td>
-            </tr>
-            <tr>
-                <td class="label">استان / شهرستان:</td>
-                <td><input type="text" id="buyer-city" class="fillable-field" placeholder="..."></td>
-                <td class="label">شماره تلفن / نمابر:</td>
-                <td><input type="text" id="buyer-phone" class="fillable-field" placeholder="..."></td>
-            </tr>
-            <tr>
-                <td class="label">نشانی کامل:</td>
-                <td colspan="3"><input type="text" id="buyer-address" class="fillable-field" placeholder="آدرس کامل خریدار..."></td>
-            </tr>
-        </table>
+            <!-- مشخصات خریدار -->
+            <div class="party-box">
+                <div class="party-title">مشخصات خریدار</div>
+                <table class="party-table">
+                    <tr>
+                        <td class="label">نام شخص حقیقی / حقوقی:</td>
+                        <td class="value fillable-text" contenteditable="true">نام شرکت یا خریدار...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">شناسه ملی:</td>
+                        <td class="value fillable-text" contenteditable="true">...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">شماره ثبت:</td>
+                        <td class="value fillable-text" contenteditable="true">...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">شماره تلفن / نمابر:</td>
+                        <td class="value fillable-text" contenteditable="true">...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">استان / شهرستان:</td>
+                        <td class="value fillable-text" contenteditable="true">...</td>
+                    </tr>
+                    <tr>
+                        <td class="label">نشانی کامل:</td>
+                        <td class="value fillable-text" contenteditable="true">آدرس کامل خریدار</td>
+                    </tr>
+                </table>
+            </div>
 
-        <!-- جدول اقلام کالا یا خدمات -->
-        <table class="items-table">
-            <thead>
-                <tr>
-                    <th style="width: 5%;">ردیف</th>
-                    <th style="width: 12%;">کد کالا</th>
-                    <th style="width: 33%;">شرح کالا یا خدمت</th>
-                    <th style="width: 8%;">تعداد</th>
-                    <th style="width: 10%;">واحد اندازه گیری</th>
-                    <th style="width: 12%;">مبلغ واحد (ریال)</th>
-                    <th style="width: 10%;">تخفیف (ریال)</th>
-                    <th style="width: 15%;">مبلغ کل (ریال)</th>
-                </tr>
-            </thead>
-            <tbody id="items-body">
-                <tr>
-                    <td data-label="ردیف:">۱</td>
-                    <td data-label="کد کالا:"><input type="text" class="item-code fillable-field" placeholder="..."></td>
-                    <td data-label="شرح کالا:"><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول..."></td>
-                    <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="" placeholder="۱"></td>
-                    <td data-label="واحد اندازه گیری:"><input type="text" class="unit fillable-field" value="عدد"></td>
-                    <td data-label="مبلغ واحد (ریال):"><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
-                    <td data-label="تخفیف (ریال):"><input type="text" class="discount fillable-field" value="" placeholder="۰"></td>
-                    <td data-label="مبلغ کل (ریال):" class="row-total">۰</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <button class="add-btn" onclick="addRow()">+ افزودن کالای جدید</button>
-
-        <!-- جداول جمع کل و مالیات -->
-        <table class="totals-table">
-            <tr>
-                <td class="label" style="width: 65%;">جمع کل پس از تخفیف:</td>
-                <td id="sub-total" style="width: 35%;">۰</td>
-            </tr>
-            <tr>
-                <td class="label">جمع مالیات و عوارض (۱۰٪):</td>
-                <td id="tax-amount">۰</td>
-            </tr>
-            <tr class="grand-total-row">
-                <td class="label">جمع مبلغ کل بعلاوه مالیات و عوارض (مبلغ قابل پرداخت):</td>
-                <td id="grand-total">۰</td>
-            </tr>
-            <!-- ردیف مبلغ کل به حروف با قابلیت ویرایش -->
-            <tr>
-                <td class="label" style="background-color: #f8fafc; font-size: 11px;">مبلغ کل به حروف:</td>
-                <td>
-                    <input type="text" id="grand-total-words" class="fillable-field" style="font-weight: bold; color: #15803d; font-size: 11px; text-align: center;" value="صفر ریال">
-                </td>
-            </tr>
-        </table>
-
-      <!-- توضیحات و امضاها -->
-        <div class="footer-note">
-            <p>پیش‌فاکتور صادر شده معتبر می‌باشد.</p>
         </div>
 
+        <!-- جدول اقلام -->
+        <div class="table-container">
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th>ردیف</th>
+                        <th>کد کالا</th>
+                        <th>شرح کالا یا خدمت</th>
+                        <th>تعداد</th>
+                        <th>واحد اندازه گیری</th>
+                        <th>مبلغ واحد (ریال)</th>
+                        <th>تخفیف (ریال)</th>
+                        <th>مبلغ کل (ریال)</th>
+                    </tr>
+                </thead>
+                <tbody id="items-body">
+                    <tr>
+                        <td data-label="ردیف:">۱</td>
+                        <td data-label="کد کالا:"><input type="text" class="item-code fillable-field" placeholder="..."></td>
+                        <td data-label="شرح کالا:"><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول...."></td>
+                        <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="۱" placeholder="۱"></td>
+                        <td data-label="واحد اندازه گیری:"><input type="text" class="unit fillable-field" value="عدد"></td>
+                        <td data-label="مبلغ واحد (ریال):"><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
+                        <td data-label="تخفیف (ریال):"><input type="text" class="discount fillable-field" value="" placeholder="۰"></td>
+                        <td data-label="مبلغ کل (ریال):" class="row-total">۰</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- دکمه افزودن سطر (در پرینت چاپ نمی‌شود) -->
+        <div class="no-print" style="margin-top: 10px; text-align: left;">
+            <button onclick="addRow()" class="add-btn">+ افزودن سطر جدید</button>
+        </div>
+
+        <!-- محاسبات و جمع کل -->
+        <div class="invoice-summary-container">
+            <div class="summary-table">
+                <div class="summary-row">
+                    <span class="summary-label">جمع کل پس از تخفیف:</span>
+                    <span class="summary-value" id="sub-total">۰</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">جمع مالیات بر ارزش افزوده (۱۰٪):</span>
+                    <span class="summary-value" id="tax-amount">۰</span>
+                </div>
+                <div class="summary-row grand-total-row">
+                    <span class="summary-label">جمع مبلغ کل بعلاوه مالیات بر ارزش افزوده:</span>
+                    <span class="summary-value" id="grand-total">۰</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- مبلغ کل به حروف -->
+        <div class="words-container">
+            <span class="words-title">مبلغ کل به حروف:</span>
+            <input type="text" id="grand-total-words" class="words-input" value="صفر ریال" readonly>
+        </div>
+
+        <!-- امضاها -->
         <div class="signatures">
             <div class="signature-box">
                 <p>مهر و امضای فروشنده</p>
-                <!-- عکس مهر و امضا (مسیر عکس خودتان را در src وارد کنید یا بگذارید همینطور بماند تا فایل sign.png را کنار کدها قرار دهید) -->
                 <div class="sign-image-container">
                     <img src="sign.png" alt="مهر و امضا" class="sign-img" onerror="this.style.display='none'">
                 </div>
@@ -157,10 +168,6 @@
             </div>
         </div>
 
-        <!-- دکمه چاپ -->
-        <div class="print-container">
-            <button onclick="window.print()" class="print-btn">چاپ / ذخیره PDF</button>
-        </div>
     </div>
 
     <script src="script.js"></script>
