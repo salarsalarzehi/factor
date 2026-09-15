@@ -25,6 +25,7 @@ body {
     box-sizing: border-box;
 }
 
+/* هدر فاکتور (عنوان راست، شماره و تاریخ ستونی در چپ) */
 .invoice-header {
     border-bottom: 2px solid #334155;
     padding-bottom: 15px;
@@ -34,13 +35,17 @@ body {
 .header-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.invoice-title {
+    text-align: right;
+    flex-grow: 1;
 }
 
 .invoice-title h2 {
-    margin: 0;
+    margin: 0 0 5px 0;
     font-size: 18px;
     color: #1e293b;
 }
@@ -51,10 +56,27 @@ body {
     font-weight: bold;
 }
 
+/* ستون سمت چپ برای قرارگیری شماره و تاریخ زیر هم */
+.invoice-meta-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 140px;
+    text-align: left;
+}
+
 .inv-number-box, .inv-date-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 13px;
     font-weight: bold;
     color: #475569;
+}
+
+.inv-number-box label, .inv-date-box label {
+    margin-left: 8px;
+    white-space: nowrap;
 }
 
 .inv-number-box input, .inv-date-box input {
@@ -65,6 +87,7 @@ body {
     border-radius: 4px;
     padding: 3px;
     color: #334155;
+    background: #fff;
 }
 
 .parties-table {
@@ -248,6 +271,21 @@ body {
     background-color: #334155;
 }
 
+/* استایل عکس مهر و امضا */
+.sign-image-container {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.sign-img {
+    max-height: 55px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 @media print {
     body {
         background: #fff;
@@ -272,10 +310,10 @@ body {
     body { padding: 4px; margin: 0; overflow-x: hidden; }
     .invoice-box { padding: 8px; border-radius: 0; box-shadow: none; border: none; width: 100% !important; box-sizing: border-box; }
     .invoice-header h2 { font-size: 15px; }
-    .header-row { flex-direction: column; gap: 6px; }
-    .invoice-title { order: 1; text-align: center; }
-    .inv-number-box { order: 2; width: 100%; display: flex; justify-content: space-between; }
-    .inv-date-box { order: 3; width: 100%; display: flex; justify-content: space-between; }
+    .header-row { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
+    .invoice-title { text-align: center; width: 100%; }
+    .invoice-meta-column { width: 100%; align-items: center; text-align: center; }
+    .inv-number-box, .inv-date-box { width: 100%; justify-content: space-between; max-width: 250px; }
 
     .parties-table, .parties-table tbody, .parties-table tr, .parties-table td {
         display: block; width: 100% !important; box-sizing: border-box;
@@ -308,18 +346,4 @@ body {
 
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 70px; }
-}
-/* استایل عکس مهر و امضا */
-.sign-image-container {
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.sign-img {
-    max-height: 55px;
-    max-width: 100%;
-    object-fit: contain;
 }
