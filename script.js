@@ -142,6 +142,17 @@ function addRow() {
     tbody.appendChild(newRow);
 }
 
+// تابع درج خودکار تاریخ روز به صورت شمسی
+function setCurrentDate() {
+    let dateInput = document.getElementById("invoice-date");
+    if (dateInput && !dateInput.value) {
+        let options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        let todayPersian = new Intl.DateTimeFormat('fa-IR', options).format(new Date());
+        dateInput.value = todayPersian;
+    }
+}
+
 window.onload = function() {
     calculate();
+    setCurrentDate();
 };
