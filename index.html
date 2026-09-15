@@ -3,106 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صدور پیش‌فاکتور</title>
+    <title>صورتحساب رسمی فروش کالا و خدمات</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="invoice-box">
-        <!-- هدر پیش‌فاکتور -->
-      <!-- هدر پیش‌فاکتور -->
+        <!-- هدر فاکتور -->
         <div class="invoice-header">
-            <h2>شرکت مهندسی و تامین پتروکاوان انرژی</h2>
-            
             <div class="header-row">
-                <span class="inv-info">شماره: <input type="text" id="inv-number" value="۱۰۰۳"></span>
-                <p class="invoice-title">پیش‌فاکتور فروش کالا</p>
-                <span class="inv-info">تاریخ: <input type="text" id="inv-date" value="۱۴۰۵/۰۶/۲۴"></span>
-            </div>
-        </div>
-
-        <!-- اطلاعات فروشنده و خریدار -->
-        <table class="parties-table">
-            <tr>
-                <td class="label">فروشنده:</td>
-                <td>شرکت مهندسی و تامین پتروکاوان انرژی</td>
-                <td class="label">تلفن:</td>
-                <td>۹۱۲۷۲۰۴۵۳۵</td>
-            </tr>
-            <tr>
-                <td class="label">آدرس:</td>
-                <td colspan="3">تهران جنت آباد، میدان چهارباغ، ۱۶ متری دوم | شناسه ملی: ۱۴۰۱۲۵۵۶۹۲۶</td>
-            </tr>
-            <tr>
-                <td class="label">خریدار:</td>
-                <td><input type="text" id="buyer-name" class="fillable-field" placeholder="نام خریدار را وارد کنید"></td>
-                <td class="label">تلفن:</td>
-                <td><input type="text" id="buyer-phone" class="fillable-field" placeholder="تلفن خریدار"></td>
-            </tr>
-            <tr>
-                <td class="label">آدرس:</td>
-                <td colspan="3"><input type="text" id="buyer-address" class="fillable-field" placeholder="آدرس کامل خریدار"></td>
-            </tr>
-        </table>
-
-        <!-- جدول محصولات -->
-        <table class="items-table" id="items-table">
-            <thead>
-                <tr>
-                    <th>ردیف</th>
-                    <th>شرح کالا</th>
-                    <th>فی (ریال)</th>
-                    <th>تعداد</th>
-                    <th>تخفیف</th>
-                    <th>مبلغ (ریال)</th>
-                </tr>
-            </thead>
- <tbody id="items-body">
-                <tr>
-                    <td data-label="ردیف:">۱</td>
-                    <td data-label="شرح کالا:"><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول..."></td>
-                    <td data-label="فی (ریال):"><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
-                    <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="" placeholder="۱"></td>
-                    <td data-label="تخفیف:"><input type="text" class="discount fillable-field" value="" placeholder="۰"></td>
-                    <td data-label="مبلغ کل:" class="row-total">۰</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <button onclick="addRow()" class="no-print">+ افزودن کالا</button>
-
-        <!-- جمع کل و مالیات -->
-        <table class="totals-table">
-            <tr>
-                <td>جمع کل:</td>
-                <td id="sub-total">۰</td>
-            </tr>
-            <tr>
-                <td>مالیات بر ارزش افزوده (۱۰٪):</td>
-                <td id="tax-amount">۰</td>
-            </tr>
-            <tr class="grand-total-row">
-                <td>مبلغ قابل پرداخت:</td>
-                <td id="grand-total">۰</td>
-            </tr>
-        </table>
-
-        <div class="invoice-footer-note">
-            صورتحساب رسمی پس از تأیید نهایی پیش‌فاکتور توسط خریدار صادر و در سامانه مؤدیان ثبت خواهد شد.
-        </div>
-
-        <div class="signatures">
-            <div class="signature-box buyer-sign">
-                <span>خریدار</span>
-            </div>
-            <div class="signature-box seller-sign">
-                <div class="stamp-container">
-                    <img src="sign.png" alt="مهر و امضا" class="sign-img">
+                <div class="invoice-title">
+                    <h2>صورتحساب فروش کالا و خدمات</h2>
+                    <span class="sub-title">(موضوع ماده ۱۶ قانون پایانه های فروشگاهی و سامانه مودیان)</span>
+                </div>
+                <div class="inv-number-box">
+                    <label>شماره:</label>
+                    <input type="text" id="invoice-number" class="fillable-field" value="۱">
+                </div>
+                <div class="inv-date-box">
+                    <label>تاریخ:</label>
+                    <input type="text" id="invoice-date" class="fillable-field" value="۱۴۰۴/۰۶/۲۳">
                 </div>
             </div>
         </div>
 
-        <button onclick="window.print()" class="no-print print-btn">چاپ / ذخیره PDF</button>
+        <!-- مشخصات فروشنده -->
+        <table class="parties-table">
+            <tr>
+                <td colspan="4" class="section-title">مشخصات فروشنده</td>
+            </tr>
+            <tr>
+                <td class="label">نام شخص حقیقی / حقوقی:</td>
+                <td><input type="text" class="fillable-field" value="شرکت مهندسی و تامین پتروکاوان انرژی"></td>
+                <td class="label">شماره ثبت / شناسه ملی:</td>
+                <td><input type="text" class="fillable-field" value="----------------"></td>
+            </tr>
+            <tr>
+                <td class="label">کد اقتصادی:</td>
+                <td><input type="text" class="fillable-field" value="----------------"></td>
+                <td class="label">کد پستی ۱۰ رقمی:</td>
+                <td><input type="text" class="fillable-field" value="----------------"></td>
+            </tr>
+            <tr>
+                <td class="label">استان / شهرستان:</td>
+                <td><input type="text" class="fillable-field" value="تهران / تهران"></td>
+                <td class="label">شماره تلفن / نمابر:</td>
+                <td><input type="text" class="fillable-field" value="----------------"></td>
+            </tr>
+            <tr>
+                <td class="label">نشانی کامل:</td>
+                <td colspan="3"><input type="text" class="fillable-field" value="تهران، جنت آباد، ..."></td>
+            </tr>
+        </table>
+
+        <!-- مشخصات خریدار -->
+        <table class="parties-table">
+            <tr>
+                <td colspan="4" class="section-title">مشخصات خریدار</td>
+            </tr>
+            <tr>
+                <td class="label">نام شخص حقیقی / حقوقی:</td>
+                <td><input type="text" id="buyer-name" class="fillable-field" placeholder="نام شرکت یا خریدار..."></td>
+                <td class="label">شماره ثبت / شناسه ملی:</td>
+                <td><input type="text" id="buyer-id" class="fillable-field" placeholder="..."></td>
+            </tr>
+            <tr>
+                <td class="label">کد اقتصادی:</td>
+                <td><input type="text" id="buyer-eco" class="fillable-field" placeholder="..."></td>
+                <td class="label">کد پستی ۱۰ رقمی:</td>
+                <td><input type="text" id="buyer-postal" class="fillable-field" placeholder="..."></td>
+            </tr>
+            <tr>
+                <td class="label">استان / شهرستان:</td>
+                <td><input type="text" id="buyer-city" class="fillable-field" placeholder="..."></td>
+                <td class="label">شماره تلفن / نمابر:</td>
+                <td><input type="text" id="buyer-phone" class="fillable-field" placeholder="..."></td>
+            </tr>
+            <tr>
+                <td class="label">نشانی کامل:</td>
+                <td colspan="3"><input type="text" id="buyer-address" class="fillable-field" placeholder="آدرس کامل خریدار..."></td>
+            </tr>
+        </table>
+
+        <!-- جدول اقلام کالا یا خدمات -->
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th style="width: 5%;">ردیف</th>
+                    <th style="width: 12%;">کد کالا</th>
+                    <th style="width: 33%;">شرح کالا یا خدمت</th>
+                    <th style="width: 8%;">تعداد</th>
+                    <th style="width: 10%;">واحد اندازه گیری</th>
+                    <th style="width: 12%;">مبلغ واحد (ریال)</th>
+                    <th style="width: 10%;">تخفیف (ریال)</th>
+                    <th style="width: 15%;">مبلغ کل (ریال)</th>
+                </tr>
+            </thead>
+            <tbody id="items-body">
+                <tr>
+                    <td data-label="ردیف:">۱</td>
+                    <td data-label="کد کالا:"><input type="text" class="item-code fillable-field" placeholder="..."></td>
+                    <td data-label="شرح کالا:"><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول..."></td>
+                    <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="" placeholder="۱"></td>
+                    <td data-label="واحد اندازه گیری:"><input type="text" class="unit fillable-field" value="عدد"></td>
+                    <td data-label="مبلغ واحد (ریال):"><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
+                    <td data-label="تخفیف (ریال):"><input type="text" class="discount fillable-field" value="" placeholder="۰"></td>
+                    <td data-label="مبلغ کل (ریال):" class="row-total">۰</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="add-btn" onclick="addRow()">+ افزودن کالای جدید</button>
+
+        <!-- جداول جمع کل و مالیات -->
+        <table class="totals-table">
+            <tr>
+                <td class="label" style="width: 70%;">جمع کل پس از تخفیف:</td>
+                <td id="sub-total" style="width: 30%;">۰</td>
+            </tr>
+            <tr>
+                <td class="label">جمع مالیات و عوارض (۱۰٪):</td>
+                <td id="tax-amount">۰</td>
+            </tr>
+            <tr class="grand-total-row">
+                <td class="label">جمع مبلغ کل به‌لاوه مالیات و عوارض (مبلغ قابل پرداخت):</td>
+                <td id="grand-total">۰</td>
+            </tr>
+        </table>
+
+        <!-- توضیحات و امضاها -->
+        <div class="footer-note">
+            <p>صورتحساب رسمی پس از تأیید نهایی پیش‌فاکتور توسط خریدار صادر و در سامانه مودیان ثبت خواهد شد.</p>
+        </div>
+
+        <div class="signatures">
+            <div class="signature-box">
+                <p>مهر و امضای فروشنده</p>
+                <div class="sign-space"></div>
+            </div>
+            <div class="signature-box">
+                <p>مهر و امضای خریدار</p>
+                <div class="sign-space"></div>
+            </div>
+        </div>
+
+        <!-- دکمه چاپ -->
+        <div class="print-container">
+            <button onclick="window.print()" class="print-btn">چاپ / ذخیره PDF</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
