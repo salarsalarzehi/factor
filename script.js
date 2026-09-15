@@ -1,11 +1,9 @@
-// تابع تبدیل اعداد انگلیسی به فارسی
 function toPersianNum(num) {
     if (num === null || num === undefined) return "۰";
     const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     return num.toString().replace(/\d/g, x => farsiDigits[x]);
 }
 
-// تابع تبدیل اعداد فارسی به انگلیسی (برای محاسبات پشت صحنه)
 function toEnglishNum(str) {
     if (!str) return "";
     const persianDigits = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
@@ -16,7 +14,6 @@ function toEnglishNum(str) {
     return englishStr;
 }
 
-// تابع جداکننده هزارگان و تبدیل به ارقام فارسی
 function formatNumber(num) {
     if (isNaN(num) || num === "") return "۰";
     let parts = num.toString().split(".");
@@ -24,7 +21,53 @@ function formatNumber(num) {
     return toPersianNum(parts.join("."));
 }
 
-// تابع محاسبه مبالغ، مالیات و جمع کل
+// تابع تبدیل عدد به حروف فارسی
+function NumberToWords(n) {
+    if (n === 0 || isNaN(n)) return "صفر ریال";
+    if (n < 0) n = Math.abs(n);
+
+    let bخش = ['','هزار','میلیون','میلیارد','تریلیون'];
+    let یکان‌ها = ['','یک','دو','سه','چهار','پنج','شش','هفت','هشت','نه'];
+    let دهگان‌ها = ['','ده','بیست‌','سی‌','چهل‌','پنجاه‌','شصت‌','هفتاد‌','هشتاد‌','نود‌'];
+    let ده‌ها = ['ده','یازده','دوازده','سیزده','چهارده','پانزده','شانزده','هفده','هجده','نوزده'];
+    let صدگان‌ها = ['','صد','دویست','سیصد','چهارصد','پانصد','ششصد','هفتصد','هشتصد','نهصد'];
+
+    function threeDigitsToWords(num) {
+        let sb = [];
+        let س = Math.floor(num / 100);
+        let د_ی = num % 100;
+        let د = Math.floor(د_ی / 10);
+        let ی = د_ی % 10;
+
+        if (س > 0) sb.push(صدگان‌ها[س]);
+        if (د_ی >= 10 && د_ی <= 19) {
+            sb.push(ده‌ها[د_ی - 10]);
+        } else {
+            if (د > 0) sb.push(دهگان‌ها[د]);
+            if (ی > 0) sb.push(یکان‌ها[ی]);
+        }
+        return sb.join(' و ');
+    }
+
+    let s = n.toString();
+    let parts = [];
+    while (s.length > 0) {
+        parts.push(s.slice(-3));
+        s = s.slice(0, -3);
+    }
+
+    let wordParts = [];
+    for (let i = 0; i < parts.length; i++) {
+        let p = parseInt(parts[i]);
+        if (p > 0) {
+            let str = threeDigitsToWords(p);
+            if (bخش[i] !== '') str += ' ' + bخش[i];
+            wordParts.push(str);
+        }
+    }
+    return wordParts.reverse().join(' و ') + ' ریال';
+}
+
 function calculate() {
     let rows = document.querySelectorAll("#items-body tr");
     let subTotal = 0;
@@ -34,65 +77,66 @@ function calculate() {
         let qtyInput = row.querySelector(".qty");
         let discountInput = row.querySelector(".discount");
         
-        // پاکسازی کاماها و تبدیل اعداد فارسی احتمالی به انگلیسی برای انجام محاسبه ریاضی
         let rawPrice = toEnglishNum(priceInput.value.replace(/,/g, ''));
         let rawQty = toEnglishNum(qtyInput.value);
-        let rawDiscount = toEnglishNum(discountInput.value);
+        let rawDiscount = toEnglishNum(discountInput.value.replace(/,/g, ''));
 
         let price = parseFloat(rawPrice) || 0;
         let qty = parseFloat(rawQty) || 0;
         let discount = parseFloat(rawDiscount) || 0;
         
         let total = (price * qty) - discount;
+        if (total < 0) total = 0;
+
         row.querySelector(".row-total").innerText = formatNumber(total);
         subTotal += total;
     });
 
-    let tax = subTotal * 0.10; // محاسبه ۱۰ درصد مالیات بر ارزش افزوده
+    let tax = subTotal * 0.10;
     let grandTotal = subTotal + tax;
 
     document.getElementById("sub-total").innerText = formatNumber(subTotal);
     document.getElementById("tax-amount").innerText = formatNumber(tax);
     document.getElementById("grand-total").innerText = formatNumber(grandTotal);
+    
+    // انتقال اتوماتیک مبلغ به حروف در فیلد مربوطه
+    document.getElementById("grand-total-words").value = NumberToWords(Math.round(grandTotal));
 }
 
-// مدیریت هوشمند ورود اعداد، کاماسازی قیمت و تبدیل خودکار به ارقام فارسی
 document.addEventListener("input", function(e) {
-    if (e.target.classList.contains("price")) {
+    if (e.target.classList.contains("price") || e.target.classList.contains("discount")) {
         let val = toEnglishNum(e.target.value.replace(/,/g, ''));
         if (!isNaN(val) && val !== "") {
-            // اعمال کاما و تبدیل به ارقام فارسی به صورت همزمان
             let formatted = Number(val).toLocaleString();
             e.target.value = toPersianNum(formatted);
         }
         calculate();
     }
-    else if (e.target.classList.contains("qty") || e.target.classList.contains("discount")) {
+    else if (e.target.classList.contains("qty")) {
         let val = toEnglishNum(e.target.value);
-        // تبدیل ارقام تایپ شده (چه با بالای کیبورد چه سمت راست) به فارسی
         e.target.value = toPersianNum(val);
         calculate();
     }
 });
 
-// تابع افزودن سطر جدید به جدول کالاها
 function addRow() {
     let tbody = document.getElementById("items-body");
     let rowCount = tbody.rows.length + 1;
     
     let newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td>${toPersianNum(rowCount)}</td>
-        <td><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول..."></td>
-        <td><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
-        <td><input type="text" class="qty fillable-field" value="" placeholder="۱"></td>
-        <td><input type="text" class="discount fillable-field" value="" placeholder="۰"></td>
-        <td class="row-total">۰</td>
+        <td data-label="ردیف:">${toPersianNum(rowCount)}</td>
+        <td data-label="کد کالا:"><input type="text" class="item-code fillable-field" placeholder="..."></td>
+        <td data-label="شرح کالا:"><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول..."></td>
+        <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="" placeholder="۱"></td>
+        <td data-label="واحد اندازه گیری:"><input type="text" class="unit fillable-field" value="عدد"></td>
+        <td data-label="مبلغ واحد (ریال):"><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
+        <td data-label="تخفیف (ریال):"><input type="text" class="discount fillable-field" value="" placeholder="۰"></td>
+        <td data-label="مبلغ کل (ریال):" class="row-total">۰</td>
     `;
     tbody.appendChild(newRow);
 }
 
-// اجرای محاسبات اولیه هنگام بارگذاری صفحه
 window.onload = function() {
     calculate();
 };
