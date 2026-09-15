@@ -9,23 +9,27 @@
 <body>
 
     <div class="invoice-box">
-        <!-- هتر فاکتور -->
-        <div class="invoice-header">
-            <div class="header-row">
-                <div class="invoice-title">
-                    <h2> شرکت مهندسی و تامین پتروکاوان انرژی (سهامی خاص)  </h2>
-                    <span class="sub-title">پیش فاکتور فروش کالا و خدمات</span>
-                </div>
-                <div class="inv-number-box">
-                    <label>شماره:</label>
-                    <input type="text" id="invoice-number" class="fillable-field" value="۱">
-                </div>
-                <div class="inv-date-box">
-                    <label>تاریخ:</label>
-                    <input type="text" id="invoice-date" class="fillable-field" value="۱۴۰۴/۰۶/۲۳">
-                </div>
+  <!-- هتر فاکتور -->
+<div class="invoice-header">
+    <div class="header-row">
+        <div class="invoice-title">
+            <h2>شرکت مهندسی و تامین پتروکاوان انرژی (سهامی خاص)</h2>
+            <span class="sub-title">پیش‌فاکتور فروش کالا و خدمات</span>
+        </div>
+        
+        <!-- یک نگه‌دارنده برای قرارگیری شماره و تاریخ زیر هم در سمت چپ -->
+        <div class="invoice-meta-column">
+            <div class="inv-number-box">
+                <label>شماره:</label>
+                <input type="text" id="invoice-number" class="fillable-field" value="۱">
+            </div>
+            <div class="inv-date-box">
+                <label>تاریخ:</label>
+                <input type="text" id="invoice-date" class="fillable-field" value="۱۴۰۴/۰۶/۲۳">
             </div>
         </div>
+    </div>
+</div>
 
         <!-- مشخصات فروشنده -->
         <table class="parties-table">
