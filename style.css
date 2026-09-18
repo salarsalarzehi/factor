@@ -359,3 +359,50 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+/* تبدیل اینپوت شرح به تکست‌آریا با قابلیت تنظیم ارتفاع */
+textarea.item-desc {
+    width: 100%;
+    min-height: 38px;
+    max-height: 120px;
+    resize: vertical;
+    border: 1px solid transparent;
+    background: #fff;
+    padding: 6px;
+    border-radius: 3px;
+    color: #334155;
+    font-family: inherit;
+    font-size: 12px;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+textarea.item-desc:focus {
+    border-color: #64748b;
+    outline: none;
+    background: #fff;
+}
+
+/* دکمه حذف سطر */
+.delete-btn {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #f87171;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+    color: #fff;
+}
+
+/* پنهان کردن دکمه حذف در هنگام پرینت */
+@media print {
+    .delete-btn {
+        display: none !important;
+    }
+}
