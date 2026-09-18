@@ -386,6 +386,13 @@ textarea.item-desc {
         height: auto !important;
         white-space: pre-wrap;
     }
+    @media print {
+    /* مخفی کردن کامل ستون عملیات در زمان پرینت */
+    .items-table th:nth-child(9),
+    .items-table td:nth-child(9) {
+        display: none !important;
+    }
+}
 }
 @media screen and (max-width: 768px) and (not print) {
     body { padding: 4px; margin: 0; overflow-x: hidden; }
