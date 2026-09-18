@@ -190,7 +190,7 @@ function setCurrentDate() {
 function triggerPrint() {
     document.querySelectorAll("textarea.item-desc, #grand-total-words").forEach(textarea => {
         textarea.style.height = "auto";
-        textarea.style.height = (textarea.scrollHeight) + "px";
+        textarea.style.height = (textarea.scrollHeight + 10) + "px";
     });
     window.print();
 }
