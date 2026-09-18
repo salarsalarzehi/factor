@@ -206,11 +206,12 @@ textarea.item-desc {
     width: 100%;
     min-width: 160px;
     min-height: 42px;
-    max-height: 120px;
-    resize: vertical;
+    height: auto !important; /* ارتفاع به صورت خودکار تنظیم شود */
+    max-height: none !important; /* محدودیت ارتفاع برداشته شود تا هر چند خط شد نشان دهد */
+    resize: none !important; /* حذف آیکون تغییر سایز دستی */
     border: 1px solid transparent;
     background: #fff;
-    padding: 6px 8px 14px 8px;
+    padding: 6px 8px; /* پدینگ یکدست */
     border-radius: 3px;
     color: #334155;
     font-family: inherit;
@@ -218,7 +219,8 @@ textarea.item-desc {
     box-sizing: border-box;
     line-height: 1.5;
     text-align: right !important;
-    white-space: normal;
+    white-space: pre-wrap !important;
+    overflow: hidden !important; /* جلوگیری از اسکرول بار داخلی */
 }
 
 textarea.item-desc:focus {
