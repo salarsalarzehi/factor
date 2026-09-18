@@ -499,3 +499,31 @@ textarea.item-desc {
         display: none !important;
     }
 }
+@media print {
+    /* باز شدن کامل ارتفاع تکست‌آریاها در زمان پرینت بدون محدودیت */
+    textarea.item-desc {
+        height: auto !important;
+        min-height: unset !important;
+        max-height: none !important;
+        overflow: visible !important;
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+        border: none !important;
+        background: transparent !important;
+        resize: none !important;
+        display: block !important;
+    }
+
+    /* جلوگیری از فیکس ماندن ارتفاع سطرها و سلول‌های جدول در چاپ */
+    .items-table tr, 
+    .items-table td {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    /* مخفی کردن دکمه‌ها و عناصر غیرضروری در خروجی چاپ */
+    .delete-btn, .add-btn, .print-container {
+        display: none !important;
+    }
+}
