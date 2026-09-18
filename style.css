@@ -406,3 +406,13 @@ textarea.item-desc:focus {
         display: none !important;
     }
 }
+/* تنظیم دقیق عرض ستون‌های جدول اقلام */
+.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }  /* ردیف */
+.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 10%; } /* کد کالا */
+.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; } /* شرح کالا یا خدمت (عرض زیاد) */
+.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 7%; }  /* تعداد */
+.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 9%; }  /* واحد */
+.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 13%; } /* مبلغ واحد */
+.items-table th:nth-child(7), .items-table td:nth-child(7) { width: 10%; } /* تخفیف */
+.items-table th:nth-child(8), .items-table td:nth-child(8) { width: 10%; } /* مبلغ کل */
+.items-table th:nth-child(9), .items-table td:nth-child(9) { width: 4%; }  /* حذف */
