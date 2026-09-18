@@ -5,6 +5,16 @@
     font-style: normal;
 }
 
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
     background-color: #f4f6f9;
@@ -23,6 +33,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 /* هدر فاکتور (عنوان راست، شماره و تاریخ ستونی در چپ) */
@@ -159,17 +170,52 @@ body {
     padding: 4px;
     border-radius: 3px;
     color: #334155;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .items-table input:focus {
     border-color: #64748b;
     background: #fff;
+    outline: none;
 }
 
-.item-desc {
+/* تنظیم دقیق عرض ستون‌های جدول اقلام */
+.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }  /* ردیف */
+.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 10%; } /* کد کالا */
+.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; } /* شرح کالا */
+.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 7%; }  /* تعداد */
+.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 9%; }  /* واحد */
+.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 13%; } /* مبلغ واحد */
+.items-table th:nth-child(7), .items-table td:nth-child(7) { width: 10%; } /* تخفیف */
+.items-table th:nth-child(8), .items-table td:nth-child(8) { width: 10%; } /* مبلغ کل */
+.items-table th:nth-child(9), .items-table td:nth-child(9) { width: 4%; }  /* حذف */
+
+/* تبدیل اینپوت شرح به تکست‌آریا با قابلیت تنظیم ارتفاع */
+textarea.item-desc {
+    width: 100%;
+    min-height: 38px;
+    max-height: 120px;
+    resize: vertical;
+    border: 1px solid transparent;
+    background: #fff;
+    padding: 6px;
+    border-radius: 3px;
+    color: #334155;
+    font-family: inherit;
+    font-size: 12px;
+    box-sizing: border-box;
+    line-height: 1.5;
     text-align: right !important;
 }
 
+textarea.item-desc:focus {
+    border-color: #64748b;
+    outline: none;
+    background: #fff;
+}
+
+/* دکمه افزودن */
 .add-btn {
     background-color: #0d9488;
     color: white;
@@ -184,6 +230,24 @@ body {
 
 .add-btn:hover {
     background-color: #0f766e;
+}
+
+/* دکمه حذف سطر */
+.delete-btn {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #f87171;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+    color: #fff;
 }
 
 .totals-table {
@@ -215,6 +279,19 @@ body {
     background-color: #f0fdf4;
     color: #166534;
     font-weight: bold;
+}
+
+.words-row td {
+    padding: 6px 10px;
+    vertical-align: middle;
+}
+
+#grand-total-words {
+    width: 100% !important;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .footer-note {
@@ -286,6 +363,7 @@ body {
     object-fit: contain;
 }
 
+/* حالت پرینت */
 @media print {
     body {
         background: #fff;
@@ -297,18 +375,45 @@ body {
         padding: 0;
         max-width: 100%;
     }
-    .add-btn, .print-btn {
-        display: none;
+    .add-btn, .print-btn, .delete-btn {
+        display: none !important;
     }
     .fillable-field, .items-table input, #grand-total-words {
         border: none !important;
         background: transparent !important;
     }
+    textarea.item-desc {
+        border: none !important;
+        background: transparent !important;
+        resize: none;
+        overflow: visible !important;
+        height: auto !important;
+    }
+    .items-table th:nth-child(9),
+    .items-table td:nth-child(9) {
+        display: none !important;
+    }
 }
 
-@media screen and (max-width: 768px) {
-    body { padding: 4px; margin: 0; overflow-x: hidden; }
-    .invoice-box { padding: 8px; border-radius: 0; box-shadow: none; border: none; width: 100% !important; box-sizing: border-box; }
+/* حالت ریسپانسیو موبایل */
+@media screen and (max-width: 768px) and (not print) {
+    body { 
+        padding: 4px !important; 
+        margin: 0 !important; 
+        overflow-x: hidden !important; 
+    }
+    
+    .invoice-box { 
+        padding: 8px !important; 
+        border-radius: 0; 
+        box-shadow: none; 
+        border: none; 
+        width: 100% !important; 
+        max-width: 100% !important;
+        box-sizing: border-box !important; 
+        overflow-x: hidden !important;
+    }
+
     .invoice-header h2 { font-size: 15px; }
     .header-row { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
     .invoice-title { text-align: center; width: 100%; }
@@ -316,30 +421,61 @@ body {
     .inv-number-box, .inv-date-box { width: 100%; justify-content: space-between; max-width: 250px; }
 
     .parties-table, .parties-table tbody, .parties-table tr, .parties-table td {
-        display: block; width: 100% !important; box-sizing: border-box;
+        display: block !important; 
+        width: 100% !important; 
+        box-sizing: border-box !important;
     }
     .parties-table tr { margin-bottom: 4px; }
     .parties-table td { padding: 5px 8px; text-align: right !important; }
     .parties-table .label { background-color: #f1f5f9; font-size: 11px; width: 100% !important; }
 
-    .items-table thead { display: none; }
+    /* تبدیل جدول اقلام به کارت‌های مجزا در موبایل بدون اسکرول افقی */
+    .items-table thead { display: none !important; }
     .items-table, .items-table tbody, .items-table tr, .items-table td {
-        display: block; width: 100% !important; box-sizing: border-box;
+        display: block !important; 
+        width: 100% !important; 
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
-    .items-table tr { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 10px; padding: 8px; }
-    .items-table td { border: none !important; display: block; width: 100% !important; padding: 4px 0; font-size: 12px; text-align: right !important; }
-    .items-table td::before { display: block; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table tr { 
+        background: #f8fafc; 
+        border: 1px solid #cbd5e1; 
+        border-radius: 6px; 
+        margin-bottom: 12px; 
+        padding: 10px; 
+    }
+    .items-table td { 
+        border: none !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        width: 100% !important; 
+        padding: 6px 0 !important; 
+        font-size: 12px; 
+        text-align: right !important; 
+    }
 
-    .items-table td:nth-child(1):before { content: "شماره ردیف:"; }
-    .items-table td:nth-child(2):before { content: "کد کالا:"; }
-    .items-table td:nth-child(3):before { content: "شرح کالا یا خدمت:"; }
-    .items-table td:nth-child(4):before { content: "تعداد:"; }
-    .items-table td:nth-child(5):before { content: "واحد اندازه گیری:"; }
-    .items-table td:nth-child(6):before { content: "مبلغ واحد (ریال):"; }
-    .items-table td:nth-child(7):before { content: "تخفیف (ریال):"; }
-    .items-table td:nth-child(8):before { content: "مبلغ کل (ریال):"; }
+    .items-table td:nth-child(1):before { content: "شماره ردیف:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table td:nth-child(2):before { content: "کد کالا:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table td:nth-child(3):before { content: "شرح کالا یا خدمت:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table td:nth-child(4):before { content: "تعداد:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table td:nth-child(5):before { content: "واحد اندازه گیری:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table td:nth-child(6):before { content: "مبلغ واحد (ریال):"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table td:nth-child(7):before { content: "تخفیف (ریال):"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table td:nth-child(8):before { content: "مبلغ کل (ریال):"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table td:nth-child(9):before { content: "عملیات:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
 
-    .items-table input { text-align: right !important; width: 100% !important; box-sizing: border-box; background: #fff !important; border: 1px solid #cbd5e1 !important; padding: 6px; border-radius: 3px; font-size: 12px; }
+    .items-table input, textarea.item-desc { 
+        text-align: right !important; 
+        width: 100% !important; 
+        max-width: 100% !important;
+        box-sizing: border-box !important; 
+        background: #fff !important; 
+        border: 1px solid #cbd5e1 !important; 
+        padding: 6px !important; 
+        border-radius: 3px !important; 
+        font-size: 12px !important; 
+    }
 
     .totals-table { width: 100% !important; }
     .totals-table td { font-size: 11px; padding: 6px; }
@@ -347,72 +483,3 @@ body {
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 70px; }
 }
-.words-row td {
-    padding: 6px 10px;
-    vertical-align: middle;
-}
-
-#grand-total-words {
-    width: 100% !important;
-    box-sizing: border-box;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-/* تبدیل اینپوت شرح به تکست‌آریا با قابلیت تنظیم ارتفاع */
-textarea.item-desc {
-    width: 100%;
-    min-height: 38px;
-    max-height: 120px;
-    resize: vertical;
-    border: 1px solid transparent;
-    background: #fff;
-    padding: 6px;
-    border-radius: 3px;
-    color: #334155;
-    font-family: inherit;
-    font-size: 12px;
-    box-sizing: border-box;
-    line-height: 1.5;
-}
-
-textarea.item-desc:focus {
-    border-color: #64748b;
-    outline: none;
-    background: #fff;
-}
-
-/* دکمه حذف سطر */
-.delete-btn {
-    background-color: #fee2e2;
-    color: #dc2626;
-    border: 1px solid #f87171;
-    padding: 4px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 11px;
-    transition: all 0.2s;
-}
-
-.delete-btn:hover {
-    background-color: #dc2626;
-    color: #fff;
-}
-
-/* پنهان کردن دکمه حذف در هنگام پرینت */
-@media print {
-    .delete-btn {
-        display: none !important;
-    }
-}
-/* تنظیم دقیق عرض ستون‌های جدول اقلام */
-.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }  /* ردیف */
-.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 10%; } /* کد کالا */
-.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; } /* شرح کالا یا خدمت (عرض زیاد) */
-.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 7%; }  /* تعداد */
-.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 9%; }  /* واحد */
-.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 13%; } /* مبلغ واحد */
-.items-table th:nth-child(7), .items-table td:nth-child(7) { width: 10%; } /* تخفیف */
-.items-table th:nth-child(8), .items-table td:nth-child(8) { width: 10%; } /* مبلغ کل */
-.items-table th:nth-child(9), .items-table td:nth-child(9) { width: 4%; }  /* حذف */
