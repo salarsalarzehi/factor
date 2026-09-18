@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
     background-color: #f4f6f9;
@@ -5,32 +12,182 @@ body {
     margin: 0;
     padding: 15px;
     color: #334155;
-    overflow-x: hidden;
-}
-
-html, body {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    box-sizing: border-box;
-}
-
-*, *:before, *:after {
-    box-sizing: inherit;
 }
 
 .invoice-box {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     max-width: 900px;
-    margin: 0 auto;
+    margin: auto;
+    background: #fff;
+    padding: 25px;
     border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    box-sizing: border-box;
 }
 
-/* جدول جمع کل */
+/* هدر فاکتور (عنوان راست، شماره و تاریخ ستونی در چپ) */
+.invoice-header {
+    border-bottom: 2px solid #334155;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.invoice-title {
+    text-align: right;
+    flex-grow: 1;
+}
+
+.invoice-title h2 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    color: #1e293b;
+}
+
+.sub-title {
+    font-size: 13px;
+    color: #475569;
+    font-weight: bold;
+}
+
+/* ستون سمت چپ برای قرارگیری شماره و تاریخ زیر هم */
+.invoice-meta-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 140px;
+    text-align: left;
+}
+
+.inv-number-box, .inv-date-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: #475569;
+}
+
+.inv-number-box label, .inv-date-box label {
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+.inv-number-box input, .inv-date-box input {
+    width: 90px;
+    text-align: center;
+    font-family: inherit;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 3px;
+    color: #334155;
+    background: #fff;
+}
+
+.parties-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.parties-table td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 8px;
+}
+
+.parties-table .section-title {
+    background-color: #334155;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 13px;
+}
+
+.parties-table .label {
+    background-color: #f8fafc;
+    font-weight: bold;
+    width: 18%;
+    color: #475569;
+}
+
+.fillable-field {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    color: #334155;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.fillable-field:focus {
+    background-color: #f1f5f9;
+    border-radius: 3px;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.items-table th, .items-table td {
+    border: 1px solid #cbd5e1;
+    padding: 8px;
+    text-align: center;
+}
+
+.items-table th {
+    background-color: #e2e8f0;
+    color: #1e293b;
+    font-weight: bold;
+}
+
+.items-table input {
+    text-align: center;
+    border: 1px solid transparent;
+    background: #fff;
+    padding: 4px;
+    border-radius: 3px;
+    color: #334155;
+}
+
+.items-table input:focus {
+    border-color: #64748b;
+    background: #fff;
+}
+
+.item-desc {
+    text-align: right !important;
+}
+
+.add-btn {
+    background-color: #0d9488;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.add-btn:hover {
+    background-color: #0f766e;
+}
+
 .totals-table {
-    width: 70% !important;
+    width: 60%;
     margin-right: auto;
     border-collapse: collapse;
     margin-bottom: 15px;
@@ -38,20 +195,15 @@ html, body {
 }
 
 .totals-table td {
-    border: 1px solid #cbd5e1 !important;
+    border: 1px solid #cbd5e1;
     padding: 6px 10px;
 }
 
-.totals-table td.label {
-    width: 40% !important;
-    text-align: right;
+.totals-table .label {
     background-color: #f8fafc;
     font-weight: bold;
+    text-align: right;
     color: #475569;
-}
-
-.totals-table td:not(.label) {
-    width: 60% !important;
 }
 
 .totals-table td:last-child {
@@ -59,7 +211,81 @@ html, body {
     color: #1e293b;
 }
 
-/* حالت پرینت */
+.grand-total-row {
+    background-color: #f0fdf4;
+    color: #166534;
+    font-weight: bold;
+}
+
+.footer-note {
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.signatures {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.signature-box {
+    width: 48%;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+    background: #fafafa;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.signature-box p {
+    margin: 0;
+    font-weight: bold;
+    color: #475569;
+}
+
+.print-container {
+    text-align: center;
+}
+
+.print-btn {
+    background-color: #475569;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.print-btn:hover {
+    background-color: #334155;
+}
+
+/* استایل عکس مهر و امضا */
+.sign-image-container {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.sign-img {
+    max-height: 55px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 @media print {
     body {
         background: #fff;
@@ -71,50 +297,18 @@ html, body {
         padding: 0;
         max-width: 100%;
     }
-    .add-btn, .print-btn, .delete-btn {
-        display: none !important;
+    .add-btn, .print-btn {
+        display: none;
     }
     .fillable-field, .items-table input, #grand-total-words {
         border: none !important;
         background: transparent !important;
     }
-    
-    textarea.item-desc {
-        border: none !important;
-        background: transparent !important;
-        resize: none;
-        overflow: visible !important;
-        max-height: none !important;
-        height: auto !important;
-        min-height: 75px !important;
-        white-space: pre-wrap;
-    }
-
-    .items-table th:nth-child(9),
-    .items-table td:nth-child(9) {
-        display: none !important;
-    }
 }
 
-/* حالت ریسپانسیو موبایل */
-@media screen and (max-width: 768px) and (not print) {
-    body { 
-        padding: 4px !important; 
-        margin: 0 !important; 
-        overflow-x: hidden !important; 
-    }
-    
-    .invoice-box { 
-        padding: 8px !important; 
-        border-radius: 0; 
-        box-shadow: none; 
-        border: none; 
-        width: 100% !important; 
-        max-width: 100% !important;
-        box-sizing: border-box !important; 
-        overflow-x: hidden !important;
-    }
-
+@media screen and (max-width: 768px) {
+    body { padding: 4px; margin: 0; overflow-x: hidden; }
+    .invoice-box { padding: 8px; border-radius: 0; box-shadow: none; border: none; width: 100% !important; box-sizing: border-box; }
     .invoice-header h2 { font-size: 15px; }
     .header-row { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
     .invoice-title { text-align: center; width: 100%; }
@@ -122,66 +316,30 @@ html, body {
     .inv-number-box, .inv-date-box { width: 100%; justify-content: space-between; max-width: 250px; }
 
     .parties-table, .parties-table tbody, .parties-table tr, .parties-table td {
-        display: block !important; 
-        width: 100% !important; 
-        box-sizing: border-box !important;
+        display: block; width: 100% !important; box-sizing: border-box;
     }
     .parties-table tr { margin-bottom: 4px; }
     .parties-table td { padding: 5px 8px; text-align: right !important; }
     .parties-table .label { background-color: #f1f5f9; font-size: 11px; width: 100% !important; }
 
-    /* تبدیل جدول اقلام به کارت‌های مجزا در موبایل */
-    .items-table thead { display: none !important; }
+    .items-table thead { display: none; }
     .items-table, .items-table tbody, .items-table tr, .items-table td {
-        display: block !important; 
-        width: 100% !important; 
-        box-sizing: border-box !important;
+        display: block; width: 100% !important; box-sizing: border-box;
     }
-    .items-table tr { 
-        background: #f8fafc; 
-        border: 1px solid #cbd5e1; 
-        border-radius: 6px; 
-        margin-bottom: 12px; 
-        padding: 10px; 
-    }
-    .items-table td { 
-        border: none !important; 
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        width: 100% !important; 
-        padding: 6px 0 !important; 
-        font-size: 12px; 
-        text-align: right !important; 
-    }
+    .items-table tr { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 10px; padding: 8px; }
+    .items-table td { border: none !important; display: block; width: 100% !important; padding: 4px 0; font-size: 12px; text-align: right !important; }
+    .items-table td::before { display: block; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
 
-    .items-table td:nth-child(1)::before { content: "شماره ردیف:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(2)::before { content: "کد کالا:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(3):::before,
-    .items-table td:nth-child(3)::before { content: "شرح کالا یا خدمت:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(4):::before,
-    .items-table td:nth-child(4)::before { content: "تعداد:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(5):::before,
-    .items-table td:nth-child(5)::before { content: "واحد اندازه‌گیری:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(6):::before,
-    .items-table td:nth-child(6)::before { content: "مبلغ واحد (ریال):"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(7):::before,
-    .items-table td:nth-child(7):::before { content: "تخفیف (ریال):"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(8):::before,
-    .items-table td:nth-child(8):::before { content: "مبلغ کل (ریال):"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(9):::before,
-    .items-table td:nth-child(9):::before { content: "عملیات:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
+    .items-table td:nth-child(1):before { content: "شماره ردیف:"; }
+    .items-table td:nth-child(2):before { content: "کد کالا:"; }
+    .items-table td:nth-child(3):before { content: "شرح کالا یا خدمت:"; }
+    .items-table td:nth-child(4):before { content: "تعداد:"; }
+    .items-table td:nth-child(5):before { content: "واحد اندازه گیری:"; }
+    .items-table td:nth-child(6):before { content: "مبلغ واحد (ریال):"; }
+    .items-table td:nth-child(7):before { content: "تخفیف (ریال):"; }
+    .items-table td:nth-child(8):before { content: "مبلغ کل (ریال):"; }
 
-    .items-table input, textarea.item-desc { 
-        text-align: right !important; 
-        width: 100% !important; 
-        box-sizing: border-box !important; 
-        background: #fff !important; 
-        border: 1px solid #cbd5e1 !important; 
-        padding: 6px !important; 
-        border-radius: 3px !important; 
-        font-size: 12px !important; 
-    }
+    .items-table input { text-align: right !important; width: 100% !important; box-sizing: border-box; background: #fff !important; border: 1px solid #cbd5e1 !important; padding: 6px; border-radius: 3px; font-size: 12px; }
 
     .totals-table { width: 100% !important; }
     .totals-table td { font-size: 11px; padding: 6px; }
@@ -189,3 +347,72 @@ html, body {
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 70px; }
 }
+.words-row td {
+    padding: 6px 10px;
+    vertical-align: middle;
+}
+
+#grand-total-words {
+    width: 100% !important;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* تبدیل اینپوت شرح به تکست‌آریا با قابلیت تنظیم ارتفاع */
+textarea.item-desc {
+    width: 100%;
+    min-height: 38px;
+    max-height: 120px;
+    resize: vertical;
+    border: 1px solid transparent;
+    background: #fff;
+    padding: 6px;
+    border-radius: 3px;
+    color: #334155;
+    font-family: inherit;
+    font-size: 12px;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+textarea.item-desc:focus {
+    border-color: #64748b;
+    outline: none;
+    background: #fff;
+}
+
+/* دکمه حذف سطر */
+.delete-btn {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #f87171;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+    color: #fff;
+}
+
+/* پنهان کردن دکمه حذف در هنگام پرینت */
+@media print {
+    .delete-btn {
+        display: none !important;
+    }
+}
+/* تنظیم دقیق عرض ستون‌های جدول اقلام */
+.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }  /* ردیف */
+.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 10%; } /* کد کالا */
+.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; } /* شرح کالا یا خدمت (عرض زیاد) */
+.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 7%; }  /* تعداد */
+.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 9%; }  /* واحد */
+.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 13%; } /* مبلغ واحد */
+.items-table th:nth-child(7), .items-table td:nth-child(7) { width: 10%; } /* تخفیف */
+.items-table th:nth-child(8), .items-table td:nth-child(8) { width: 10%; } /* مبلغ کل */
+.items-table th:nth-child(9), .items-table td:nth-child(9) { width: 4%; }  /* حذف */
