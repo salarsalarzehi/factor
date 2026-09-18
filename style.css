@@ -375,23 +375,44 @@ textarea.item-desc:focus {
 }
 
 /* حالت پرینت */
+/* حالت پرینت */
 @media print {
     body {
         background: #fff;
         padding: 0;
+        margin: 0;
     }
     .invoice-box {
         border: none;
         box-shadow: none;
-        padding: 0;
-        max-width: 100%;
+        padding: 5px;
+        max-width: 100% !important;
+        width: 100% !important;
     }
     .table-responsive {
         overflow: visible !important;
+        width: 100% !important;
+    }
+    .parties-table, .items-table, .totals-table {
+        min-width: 100% !important;
+        width: 100% !important;
     }
     .add-btn, .print-btn, .delete-btn {
         display: none !important;
     }
+    
+    /* مخفی کردن کامل ستون عملیات (ستون نهم) در پرینت */
+    .items-table th:nth-child(9),
+    .items-table td:nth-child(9) {
+        display: none !important;
+    }
+
+    /* تنظیم عرض ستون شرح کالا برای پر کردن فضای خالی ستون حذف */
+    .items-table th:nth-child(3), 
+    .items-table td:nth-child(3) {
+        width: 40% !important;
+    }
+
     .fillable-field, .items-table input, #grand-total-words {
         border: none !important;
         background: transparent !important;
@@ -403,10 +424,6 @@ textarea.item-desc:focus {
         overflow: visible !important;
         height: auto !important;
         padding: 0 !important;
-    }
-    .items-table th:nth-child(9),
-    .items-table td:nth-child(9) {
-        display: none !important;
     }
 }
 
