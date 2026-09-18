@@ -36,7 +36,7 @@ body {
     overflow-x: hidden;
 }
 
-/* هدر فاکتور (عنوان راست، شماره و تاریخ ستونی در چپ) */
+/* هدر فاکتور */
 .invoice-header {
     border-bottom: 2px solid #334155;
     padding-bottom: 15px;
@@ -67,7 +67,6 @@ body {
     font-weight: bold;
 }
 
-/* ستون سمت چپ برای قرارگیری شماره و تاریخ زیر هم */
 .invoice-meta-column {
     display: flex;
     flex-direction: column;
@@ -181,25 +180,25 @@ body {
 }
 
 /* تنظیم دقیق عرض ستون‌های جدول اقلام */
-.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }  /* ردیف */
-.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 10%; } /* کد کالا */
-.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; } /* شرح کالا */
-.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 7%; }  /* تعداد */
-.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 9%; }  /* واحد */
-.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 13%; } /* مبلغ واحد */
-.items-table th:nth-child(7), .items-table td:nth-child(7) { width: 10%; } /* تخفیف */
-.items-table th:nth-child(8), .items-table td:nth-child(8) { width: 10%; } /* مبلغ کل */
-.items-table th:nth-child(9), .items-table td:nth-child(9) { width: 4%; }  /* حذف */
+.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }  
+.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 10%; } 
+.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; } 
+.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 7%; }  
+.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 9%; }  
+.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 13%; } 
+.items-table th:nth-child(7), .items-table td:nth-child(7) { width: 10%; } 
+.items-table th:nth-child(8), .items-table td:nth-child(8) { width: 10%; } 
+.items-table th:nth-child(9), .items-table td:nth-child(9) { width: 4%; }  
 
-/* تبدیل اینپوت شرح به تکست‌آریا با قابلیت تنظیم ارتفاع */
+/* اصلاح پدینگ و ظاهر تکست‌آریا برای جلوگیری از تداخل با آیکون ریسایز */
 textarea.item-desc {
     width: 100%;
-    min-height: 38px;
+    min-height: 42px;
     max-height: 120px;
     resize: vertical;
     border: 1px solid transparent;
     background: #fff;
-    padding: 6px;
+    padding: 6px 8px 14px 8px; /* پدینگ پایین بیشتر برای فاصله از آیکون تغییر سایز */
     border-radius: 3px;
     color: #334155;
     font-family: inherit;
@@ -215,7 +214,6 @@ textarea.item-desc:focus {
     background: #fff;
 }
 
-/* دکمه افزودن */
 .add-btn {
     background-color: #0d9488;
     color: white;
@@ -232,7 +230,6 @@ textarea.item-desc:focus {
     background-color: #0f766e;
 }
 
-/* دکمه حذف سطر */
 .delete-btn {
     background-color: #fee2e2;
     color: #dc2626;
@@ -250,8 +247,10 @@ textarea.item-desc:focus {
     color: #fff;
 }
 
+/* اصلاح توازن جدول جمع کل */
 .totals-table {
-    width: 60%;
+    width: 50% !important;
+    min-width: 320px;
     margin-right: auto;
     border-collapse: collapse;
     margin-bottom: 15px;
@@ -268,11 +267,13 @@ textarea.item-desc:focus {
     font-weight: bold;
     text-align: right;
     color: #475569;
+    width: 55%;
 }
 
 .totals-table td:last-child {
     font-weight: bold;
     color: #1e293b;
+    text-align: left;
 }
 
 .grand-total-row {
@@ -292,6 +293,7 @@ textarea.item-desc:focus {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: right;
 }
 
 .footer-note {
@@ -316,7 +318,7 @@ textarea.item-desc:focus {
     text-align: center;
     font-size: 12px;
     background: #fafafa;
-    height: 70px;
+    height: 90px; /* افزایش ارتفاع کادر امضا برای جایگیری بهتر مهر */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -348,17 +350,17 @@ textarea.item-desc:focus {
     background-color: #334155;
 }
 
-/* استایل عکس مهر و امضا */
+/* بهبود فاصله‌گذاری و مرکزچین کردن عکس مهر و امضا */
 .sign-image-container {
-    height: 50px;
+    height: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5px;
+    margin: 4px 0;
 }
 
 .sign-img {
-    max-height: 55px;
+    max-height: 50px;
     max-width: 100%;
     object-fit: contain;
 }
@@ -388,6 +390,7 @@ textarea.item-desc:focus {
         resize: none;
         overflow: visible !important;
         height: auto !important;
+        padding: 0 !important;
     }
     .items-table th:nth-child(9),
     .items-table td:nth-child(9) {
@@ -429,7 +432,6 @@ textarea.item-desc:focus {
     .parties-table td { padding: 5px 8px; text-align: right !important; }
     .parties-table .label { background-color: #f1f5f9; font-size: 11px; width: 100% !important; }
 
-    /* تبدیل جدول اقلام به کارت‌های مجزا در موبایل بدون اسکرول افقی */
     .items-table thead { display: none !important; }
     .items-table, .items-table tbody, .items-table tr, .items-table td {
         display: block !important; 
@@ -481,5 +483,5 @@ textarea.item-desc:focus {
     .totals-table td { font-size: 11px; padding: 6px; }
 
     .signatures { flex-direction: column; height: auto; gap: 10px; }
-    .signature-box { width: 100% !important; height: 70px; }
+    .signature-box { width: 100% !important; height: 80px; }
 }
