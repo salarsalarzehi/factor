@@ -382,7 +382,7 @@ textarea.item-desc {
         background: transparent !important;
         resize: none;
         overflow: hidden !important; /* پنهان کردن اضافات بیش از ۴ خط */
-        max-height: 85px !important;  /* محدودیت ارتفاع برای حداکثر ۴ خط */
+        max-height: 100px !important;  /* محدودیت ارتفاع برای حداکثر ۴ خط */
         height: auto !important;
         white-space: pre-wrap;
     }
