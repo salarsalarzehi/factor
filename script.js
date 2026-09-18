@@ -177,3 +177,10 @@ window.onload = function() {
     calculate();
     setCurrentDate();
 };
+// تنظیم خودکار ارتفاع تکست‌آریا هنگام تایپ یا زدن اینتر
+document.addEventListener("input", function(e) {
+    if (e.target.classList.contains("item-desc")) {
+        e.target.style.height = "auto";
+        e.target.style.height = (e.target.scrollHeight) + "px";
+    }
+});
