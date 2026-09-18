@@ -428,6 +428,7 @@ textarea.item-desc:focus {
 }
 
 /* حالت ریسپانسیو موبایل */
+/* حالت ریسپانسیو موبایل */
 @media screen and (max-width: 768px) and (not print) {
     body { 
         padding: 6px !important; 
@@ -445,6 +446,12 @@ textarea.item-desc:focus {
     .invoice-title { text-align: center; width: 100%; }
     .invoice-meta-column { width: 100%; align-items: center; text-align: center; }
     .inv-number-box, .inv-date-box { width: 100%; justify-content: space-between; max-width: 250px; }
+
+    /* تعیین حداقل عرض برای جدول جمع کل در موبایل تا اسکرول افقی فعال شود */
+    .totals-table {
+        min-width: 380px !important;
+        width: 100% !important;
+    }
 
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 80px; }
