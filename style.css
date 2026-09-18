@@ -202,14 +202,23 @@ body {
     font-size: 12px;
 }
 
-/* تعیین عرض دقیق ستون‌ها (سمت راست کوچک‌تر، سمت چپ بزرگ‌تر) */
+/* بازگرداندن بردرها و حاشیه‌ها به سلول‌های جدول جمع کل */
+.totals-table td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 6px 10px;
+}
+
+/* تعیین عرض دقیق ستون‌ها */
 .totals-table td.label {
-    width: 40% !important; /* عرض بخش متن‌ها (قسمت قرمز) */
+    width: 40% !important;
     text-align: right;
+    background-color: #f8fafc;
+    font-weight: bold;
+    color: #475569;
 }
 
 .totals-table td:not(.label) {
-    width: 60% !important; /* عرض بخش اعداد و حروف */
+    width: 60% !important;
 }
 
 .totals-table td:last-child {
