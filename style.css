@@ -100,16 +100,25 @@ body {
     background: #fff;
 }
 
+/* کانتینر اسکرول افقی برای جداول در موبایل (Wrapper) */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 15px;
+}
+
 .parties-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 15px;
     font-size: 12px;
+    min-width: 650px; /* اجبار به اسکرول افقی در صفحه کوچک */
 }
 
 .parties-table td {
     border: 1px solid #cbd5e1;
     padding: 6px 8px;
+    white-space: nowrap;
 }
 
 .parties-table .section-title {
@@ -148,12 +157,14 @@ body {
     border-collapse: collapse;
     margin-bottom: 10px;
     font-size: 12px;
+    min-width: 800px; /* اجبار به اسکرول افقی در جدول اقلام */
 }
 
 .items-table th, .items-table td {
     border: 1px solid #cbd5e1;
     padding: 8px;
     text-align: center;
+    white-space: nowrap;
 }
 
 .items-table th {
@@ -182,7 +193,7 @@ body {
 /* تنظیم دقیق عرض ستون‌های جدول اقلام */
 .items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }  
 .items-table th:nth-child(2), .items-table td:nth-child(2) { width: 10%; } 
-.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; } 
+.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; white-space: normal; } 
 .items-table th:nth-child(4), .items-table td:nth-child(4) { width: 7%; }  
 .items-table th:nth-child(5), .items-table td:nth-child(5) { width: 9%; }  
 .items-table th:nth-child(6), .items-table td:nth-child(6) { width: 13%; } 
@@ -190,15 +201,16 @@ body {
 .items-table th:nth-child(8), .items-table td:nth-child(8) { width: 10%; } 
 .items-table th:nth-child(9), .items-table td:nth-child(9) { width: 4%; }  
 
-/* اصلاح پدینگ و ظاهر تکست‌آریا برای جلوگیری از تداخل با آیکون ریسایز */
+/* اصلاح پدینگ و ظاهر تکست‌آریا */
 textarea.item-desc {
     width: 100%;
+    min-width: 160px;
     min-height: 42px;
     max-height: 120px;
     resize: vertical;
     border: 1px solid transparent;
     background: #fff;
-    padding: 6px 8px 14px 8px; /* پدینگ پایین بیشتر برای فاصله از آیکون تغییر سایز */
+    padding: 6px 8px 14px 8px;
     border-radius: 3px;
     color: #334155;
     font-family: inherit;
@@ -206,6 +218,7 @@ textarea.item-desc {
     box-sizing: border-box;
     line-height: 1.5;
     text-align: right !important;
+    white-space: normal;
 }
 
 textarea.item-desc:focus {
@@ -250,19 +263,19 @@ textarea.item-desc:focus {
 /* اصلاح توازن جدول جمع کل */
 .totals-table {
     width: 70% !important;
+    min-width: 350px;
     margin-right: auto;
     border-collapse: collapse;
     margin-bottom: 15px;
     font-size: 12px;
 }
 
-/* بازگرداندن بردرها و حاشیه‌ها به سلول‌های جدول جمع کل */
 .totals-table td {
     border: 1px solid #cbd5e1 !important;
     padding: 6px 10px;
+    white-space: nowrap;
 }
 
-/* تعیین عرض دقیق ستون‌ها */
 .totals-table td.label {
     width: 40% !important;
     text-align: right;
@@ -273,6 +286,7 @@ textarea.item-desc:focus {
 
 .totals-table td:not(.label) {
     width: 60% !important;
+    white-space: normal !important;
 }
 
 .totals-table td:last-child {
@@ -283,8 +297,8 @@ textarea.item-desc:focus {
 #grand-total-words {
     width: 100% !important;
     box-sizing: border-box;
-    white-space: normal !important; /* اجازه شکستن خطوط متن */
-    word-break: break-word !important; /* شکستن کلمات طولانی در صورت نیاز */
+    white-space: normal !important;
+    word-break: break-word !important;
     overflow: visible !important;
     text-overflow: clip !important;
     text-align: right;
@@ -314,7 +328,7 @@ textarea.item-desc:focus {
     text-align: center;
     font-size: 12px;
     background: #fafafa;
-    height: 90px; /* افزایش ارتفاع کادر امضا برای جایگیری بهتر مهر */
+    height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -346,7 +360,6 @@ textarea.item-desc:focus {
     background-color: #334155;
 }
 
-/* بهبود فاصله‌گذاری و مرکزچین کردن عکس مهر و امضا */
 .sign-image-container {
     height: 55px;
     display: flex;
@@ -373,6 +386,9 @@ textarea.item-desc:focus {
         padding: 0;
         max-width: 100%;
     }
+    .table-responsive {
+        overflow: visible !important;
+    }
     .add-btn, .print-btn, .delete-btn {
         display: none !important;
     }
@@ -395,7 +411,6 @@ textarea.item-desc:focus {
 }
 
 /* حالت ریسپانسیو موبایل */
-/* حالت ریسپانسیو موبایل با قابلیت اسکرول افقی برای جدول‌ها */
 @media screen and (max-width: 768px) and (not print) {
     body { 
         padding: 6px !important; 
@@ -403,50 +418,16 @@ textarea.item-desc:focus {
     }
     
     .invoice-box { 
-        padding: 12px !important; 
-        border-radius: 6px; 
+        padding: 10px !important; 
         width: 100% !important; 
         box-sizing: border-box !important; 
     }
 
-    .invoice-header h2 { font-size: 16px; }
+    .invoice-header h2 { font-size: 15px; }
     .header-row { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
     .invoice-title { text-align: center; width: 100%; }
     .invoice-meta-column { width: 100%; align-items: center; text-align: center; }
     .inv-number-box, .inv-date-box { width: 100%; justify-content: space-between; max-width: 250px; }
-
-    /* ایجاد کانتینر اسکرول افقی برای جداول در موبایل */
-    .parties-table, .items-table, .totals-table {
-        display: table !important;
-        width: 100% !important;
-        min-width: 600px !important; /* حداقل عرض برای اجبار به اسکرول افقی */
-    }
-
-    /* پیچیدن جداول داخل یک باکس با قابلیت اسکرول افقی */
-    .parties-table, .items-table, .totals-table {
-        overflow-x: auto;
-        display: block;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* استایل سلول‌ها در حالت اسکرول افقی موبایل */
-    .parties-table td, .items-table td, .items-table th, .totals-table td {
-        display: table-cell !important;
-        white-space: nowrap !important;
-        font-size: 11px !important;
-        padding: 6px !important;
-    }
-
-    .items-table input, textarea.item-desc {
-        width: 100px !important; /* عرض ثابت برای اینپوت‌ها در حالت اسکرول */
-        min-width: 80px;
-    }
-
-    textarea.item-desc {
-        min-height: 35px !important;
-        height: 35px !important;
-    }
 
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 80px; }
