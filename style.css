@@ -389,8 +389,10 @@ textarea.item-desc {
         border: none !important;
         background: transparent !important;
         resize: none;
-        max-height: 100px !important;  /* محدودیت ارتفاع برای حداکثر ۴ خط */
+        overflow: visible !important; /* اجازه نمایش کامل محتوا بدون پنهان کردن */
+        max-height: none !important;  /* برداشتن محدودیت ارتفاع سخت‌گیرانه */
         height: auto !important;
+        min-height: 75px !important;  /* فضای کافی برای نمایش متن‌های چند خطی */
         white-space: pre-wrap;
     }
     @media print {
