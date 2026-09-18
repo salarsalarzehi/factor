@@ -104,10 +104,19 @@ function calculate() {
     let wordsInput = document.getElementById("grand-total-words");
     if (wordsInput) {
         wordsInput.value = wordsResult;
+        // تنظیم خودکار ارتفاع تکست‌آریا مبلغ به حروف
+        wordsInput.style.height = "auto";
+        wordsInput.style.height = (wordsInput.scrollHeight) + "px";
     }
 }
 
-// گوش دادن به تغییرات قیمت، تعداد و تخفیف برای به‌روزرسانی لحظه‌ای
+// تابع تنظیم خودکار ارتفاع تکست‌آریا
+function autoResizeTextarea(el) {
+    el.style.height = "auto";
+    el.style.height = (el.scrollHeight) + "px";
+}
+
+// گوش دادن به تغییرات قیمت، تعداد و تخفیف و همچنین تکست‌آریاها
 document.addEventListener("input", function(e) {
     if (e.target.classList.contains("price") || e.target.classList.contains("discount")) {
         let val = toEnglishNum(e.target.value.replace(/,/g, ''));
@@ -122,9 +131,12 @@ document.addEventListener("input", function(e) {
         e.target.value = toPersianNum(val);
         calculate();
     }
+    else if (e.target.classList.contains("item-desc")) {
+        autoResizeTextarea(e.target);
+    }
 });
 
-// تابع اضافه کردن سطر جدید (با textarea و دکمه حذف)
+// تابع اضافه کردن سطر جدید
 function addRow() {
     let tbody = document.getElementById("items-body");
     let rowCount = tbody.rows.length + 1;
@@ -142,6 +154,10 @@ function addRow() {
         <td data-label="عملیات:"><button type="button" class="delete-btn" onclick="deleteRow(this)">حذف</button></td>
     `;
     tbody.appendChild(newRow);
+    
+    // تنظیم ارتفاع اولیه تکست‌آریا جدید
+    let newTextarea = newRow.querySelector(".item-desc");
+    if (newTextarea) autoResizeTextarea(newTextarea);
 }
 
 // تابع حذف سطر مشخص
@@ -149,7 +165,7 @@ function deleteRow(button) {
     let row = button.closest("tr");
     row.remove();
     updateRowNumbers();
-    calculate(); // محاسبه مجدد جمع‌ها پس از حذف سطر
+    calculate();
 }
 
 // تابع به‌روزرسانی شماره ردیف‌ها بعد از حذف
@@ -176,11 +192,9 @@ function setCurrentDate() {
 window.onload = function() {
     calculate();
     setCurrentDate();
+    
+    // تنظیم ارتفاع تمام تکست‌آریاهای موجود در لود اولیه
+    document.querySelectorAll("textarea.item-desc, #grand-total-words").forEach(textarea => {
+        autoResizeTextarea(textarea);
+    });
 };
-// تنظیم خودکار ارتفاع تکست‌آریا هنگام تایپ یا زدن اینتر
-document.addEventListener("input", function(e) {
-    if (e.target.classList.contains("item-desc")) {
-        e.target.style.height = "auto";
-        e.target.style.height = (e.target.scrollHeight) + "px";
-    }
-});
