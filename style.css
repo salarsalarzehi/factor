@@ -303,16 +303,17 @@ body {
 #grand-total-words {
     width: 100% !important;
     box-sizing: border-box;
-    white-space: normal !important;
+    white-space: pre-wrap !important;
     word-wrap: break-word !important;
     overflow: visible !important;
-    text-overflow: clip !important;
     border: none !important;
     background: transparent !important;
     font-weight: bold;
-    color: #166534;
+    color: #15803d;
     font-size: 11px;
     text-align: right;
+    height: auto !important;
+    min-height: 24px;
 }
 
 /* تبدیل اینپوت شرح به تکست‌آریا با قابلیت تنظیم ارتفاع خودکار */
