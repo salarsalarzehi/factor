@@ -104,9 +104,7 @@ function calculate() {
     let wordsInput = document.getElementById("grand-total-words");
     if (wordsInput) {
         wordsInput.value = wordsResult;
-        // تنظیم خودکار ارتفاع تکست‌آریا مبلغ به حروف
-        wordsInput.style.height = "auto";
-        wordsInput.style.height = (wordsInput.scrollHeight) + "px";
+        autoResizeTextarea(wordsInput);
     }
 }
 
@@ -144,18 +142,17 @@ function addRow() {
     let newRow = document.createElement("tr");
     newRow.innerHTML = `
         <td data-label="ردیف:">${toPersianNum(rowCount)}</td>
-        <td data-label="کد کالا:"><input type="text" class="item-code fillable-field" placeholder="..."></td>
-        <td data-label="شرح کالا:"><textarea class="item-desc fillable-field" placeholder="نام و شرح محصول..."></textarea></td>
-        <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="" placeholder="۱"></td>
+        <td data-label="کد کالا:"><input type="text" class="item-code fillable-field" value="..."></td>
+        <td data-label="شرح کالا یا خدمت:"><textarea class="item-desc fillable-field">نام و شرح محصول...</textarea></td>
+        <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="۱"></td>
         <td data-label="واحد اندازه گیری:"><input type="text" class="unit fillable-field" value="عدد"></td>
-        <td data-label="مبلغ واحد (ریال):"><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
-        <td data-label="تخفیف (ریال):"><input type="text" class="discount fillable-field" value="" placeholder="۰"></td>
+        <td data-label="مبلغ واحد (ریال):"><input type="text" class="price fillable-field" value=""></td>
+        <td data-label="تخفیف (ریال):"><input type="text" class="discount fillable-field" value=""></td>
         <td data-label="مبلغ کل (ریال):" class="row-total">۰</td>
         <td data-label="عملیات:"><button type="button" class="delete-btn" onclick="deleteRow(this)">حذف</button></td>
     `;
     tbody.appendChild(newRow);
     
-    // تنظیم ارتفاع اولیه تکست‌آریا جدید
     let newTextarea = newRow.querySelector(".item-desc");
     if (newTextarea) autoResizeTextarea(newTextarea);
 }
@@ -189,11 +186,19 @@ function setCurrentDate() {
     }
 }
 
+// تابع پرینت سفارشی برای باز کردن کامل تکست‌آریاها قبل از چاپ
+function triggerPrint() {
+    document.querySelectorAll("textarea.item-desc, #grand-total-words").forEach(textarea => {
+        textarea.style.height = "auto";
+        textarea.style.height = (textarea.scrollHeight) + "px";
+    });
+    window.print();
+}
+
 window.onload = function() {
     calculate();
     setCurrentDate();
     
-    // تنظیم ارتفاع تمام تکست‌آریاهای موجود در لود اولیه
     document.querySelectorAll("textarea.item-desc, #grand-total-words").forEach(textarea => {
         autoResizeTextarea(textarea);
     });
