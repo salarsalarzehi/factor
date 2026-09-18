@@ -195,23 +195,21 @@ body {
 }
 
 .totals-table {
-    width: 80%;
+    width: 70% !important;
     margin-right: auto;
     border-collapse: collapse;
     margin-bottom: 15px;
     font-size: 12px;
 }
 
-.totals-table td {
-    border: 1px solid #cbd5e1;
-    padding: 6px 10px;
+/* تعیین عرض دقیق ستون‌ها (سمت راست کوچک‌تر، سمت چپ بزرگ‌تر) */
+.totals-table td.label {
+    width: 40% !important; /* عرض بخش متن‌ها (قسمت قرمز) */
+    text-align: right;
 }
 
-.totals-table .label {
-    background-color: #f8fafc;
-    font-weight: bold;
-    text-align: right;
-    color: #475569;
+.totals-table td:not(.label) {
+    width: 60% !important; /* عرض بخش اعداد و حروف */
 }
 
 .totals-table td:last-child {
