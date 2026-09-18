@@ -472,3 +472,30 @@ textarea.item-desc {
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 80px; }
 }
+@media print {
+    /* باز شدن کامل تکست‌آریاها و جلوگیری از پنهان شدن متن */
+    textarea.item-desc {
+        height: auto !important;
+        min-height: 50px !important;
+        max-height: none !important;
+        overflow: visible !important;
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+        border: none !important;
+        background: transparent !important;
+        resize: none !important;
+        padding: 4px 0 !important;
+    }
+
+    /* جلوگیری از فیکس بودن ارتفاع سطرها در جدول اقلام هنگام پرینت */
+    .items-table tr, .items-table td {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    /* مخفی کردن دکمه‌ها و عناصر اضافی در زمان چاپ */
+    .delete-btn, .add-btn, .print-container {
+        display: none !important;
+    }
+}
