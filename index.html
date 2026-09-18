@@ -9,7 +9,7 @@
 <body>
 
 <div class="invoice-box">
-    <!-- هتر فاکتور -->
+    <!-- هدر فاکتور -->
     <div class="invoice-header">
         <div class="header-row">
             <div class="invoice-title">
@@ -30,118 +30,126 @@
         </div>
     </div>
 
-    <!-- مشخصات فروشنده -->
-    <table class="parties-table">
-        <tr>
-            <td colspan="4" class="section-title">مشخصات فروشنده</td>
-        </tr>
-        <tr>
-            <td class="label">نام شخص حقیقی / حقوقی:</td>
-            <td><input type="text" class="fillable-field" value="شرکت مهندسی و تامین پتروکاوان انرژی"></td>
-            <td class="label">شماره ثبت:</td>
-            <td>۶۱۸۰۳۷</td>
-        </tr>
-        <tr>
-            <td class="label">شناسه ملی:</td>
-            <td><input type="text" class="fillable-field" value="..."></td>
-            <td class="label">کد پستی ۱۰ رقمی:</td>
-            <td><input type="text" class="fillable-field" value="..."></td>
-        </tr>
-        <tr>
-            <td class="label">استان / شهرستان:</td>
-            <td><input type="text" class="fillable-field" value="تهران / تهران"></td>
-            <td class="label">شماره تلفن / نمابر:</td>
-            <td><input type="text" class="fillable-field" value="..."></td>
-        </tr>
-        <tr>
-            <td class="label">نشانی کامل:</td>
-            <td colspan="3"><input type="text" class="fillable-field" value="تهران، جنت‌آباد، ..."></td>
-        </tr>
-    </table>
-
-    <!-- مشخصات خریدار -->
-    <table class="parties-table">
-        <tr>
-            <td colspan="4" class="section-title">مشخصات خریدار</td>
-        </tr>
-        <tr>
-            <td class="label">نام شخص حقیقی / حقوقی:</td>
-            <td><input type="text" class="fillable-field" value="نام شرکت یا خریدار..."></td>
-            <td class="label">شماره ثبت:</td>
-            <td><input type="text" class="fillable-field" value="..."></td>
-        </tr>
-        <tr>
-            <td class="label">شناسه ملی:</td>
-            <td><input type="text" class="fillable-field" value="..."></td>
-            <td class="label">کد پستی ۱۰ رقمی:</td>
-            <td><input type="text" class="fillable-field" value="..."></td>
-        </tr>
-        <tr>
-            <td class="label">استان / شهرستان:</td>
-            <td><input type="text" class="fillable-field" value="..."></td>
-            <td class="label">شماره تلفن / نمابر:</td>
-            <td><input type="text" class="fillable-field" value="..."></td>
-        </tr>
-        <tr>
-            <td class="label">نشانی کامل:</td>
-            <td colspan="3"><input type="text" class="fillable-field" value="آدرس کامل خریدار..."></td>
-        </tr>
-    </table>
-
-    <!-- جدول اقلام -->
-    <table class="items-table">
-        <thead>
+    <!-- مشخصات فروشنده با قابلیت اسکرول افقی در موبایل -->
+    <div class="table-responsive">
+        <table class="parties-table">
             <tr>
-                <th>ردیف</th>
-                <th>کد کالا</th>
-                <th>شرح کالا یا خدمت</th>
-                <th>تعداد</th>
-                <th>واحد اندازه گیری</th>
-                <th>مبلغ واحد (ریال)</th>
-                <th>تخفیف (ریال)</th>
-                <th>مبلغ کل (ریال)</th>
-                <th>عملیات</th>
+                <td colspan="4" class="section-title">مشخصات فروشنده</td>
             </tr>
-        </thead>
-        <tbody id="items-body">
             <tr>
-                <td data-label="ردیف:">۱</td>
-                <td data-label="کد کالا:"><input type="text" class="item-code fillable-field" value="..."></td>
-                <td data-label="شرح کالا یا خدمت:"><textarea class="item-desc fillable-field">نام و شرح محصول...</textarea></td>
-                <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="۱۰"></td>
-                <td data-label="واحد اندازه گیری:"><input type="text" class="unit fillable-field" value="عدد"></td>
-                <td data-label="مبلغ واحد (ریال):"><input type="text" class="price fillable-field" value=""></td>
-                <td data-label="تخفیف (ریال):"><input type="text" class="discount fillable-field" value=""></td>
-                <td data-label="مبلغ کل (ریال):" class="row-total"></td>
-                <td data-label="عملیات:"><button type="button" class="delete-btn" onclick="deleteRow(this)">حذف</button></td>
+                <td class="label">نام شخص حقیقی / حقوقی:</td>
+                <td><input type="text" class="fillable-field" value="شرکت مهندسی و تامین پتروکاوان انرژی"></td>
+                <td class="label">شماره ثبت:</td>
+                <td>۶۱۸۰۳۷</td>
             </tr>
-        </tbody>
-    </table>
+            <tr>
+                <td class="label">شناسه ملی:</td>
+                <td><input type="text" class="fillable-field" value="..."></td>
+                <td class="label">کد پستی ۱۰ رقمی:</td>
+                <td><input type="text" class="fillable-field" value="..."></td>
+            </tr>
+            <tr>
+                <td class="label">استان / شهرستان:</td>
+                <td><input type="text" class="fillable-field" value="تهران / تهران"></td>
+                <td class="label">شماره تلفن / نمابر:</td>
+                <td><input type="text" class="fillable-field" value="..."></td>
+            </tr>
+            <tr>
+                <td class="label">نشانی کامل:</td>
+                <td colspan="3"><input type="text" class="fillable-field" value="تهران، جنت‌آباد، ..."></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- مشخصات خریدار با قابلیت اسکرول افقی در موبایل -->
+    <div class="table-responsive">
+        <table class="parties-table">
+            <tr>
+                <td colspan="4" class="section-title">مشخصات خریدار</td>
+            </tr>
+            <tr>
+                <td class="label">نام شخص حقیقی / حقوقی:</td>
+                <td><input type="text" class="fillable-field" value="نام شرکت یا خریدار..."></td>
+                <td class="label">شماره ثبت:</td>
+                <td><input type="text" class="fillable-field" value="..."></td>
+            </tr>
+            <tr>
+                <td class="label">شناسه ملی:</td>
+                <td><input type="text" class="fillable-field" value="..."></td>
+                <td class="label">کد پستی ۱۰ رقمی:</td>
+                <td><input type="text" class="fillable-field" value="..."></td>
+            </tr>
+            <tr>
+                <td class="label">استان / شهرستان:</td>
+                <td><input type="text" class="fillable-field" value="..."></td>
+                <td class="label">شماره تلفن / نمابر:</td>
+                <td><input type="text" class="fillable-field" value="..."></td>
+            </tr>
+            <tr>
+                <td class="label">نشانی کامل:</td>
+                <td colspan="3"><input type="text" class="fillable-field" value="آدرس کامل خریدار..."></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- جدول اقلام با قابلیت اسکرول افقی در موبایل -->
+    <div class="table-responsive">
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>ردیف</th>
+                    <th>کد کالا</th>
+                    <th>شرح کالا یا خدمت</th>
+                    <th>تعداد</th>
+                    <th>واحد اندازه گیری</th>
+                    <th>مبلغ واحد (ریال)</th>
+                    <th>تخفیف (ریال)</th>
+                    <th>مبلغ کل (ریال)</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody id="items-body">
+                <tr>
+                    <td data-label="ردیف:">۱</td>
+                    <td data-label="کد کالا:"><input type="text" class="item-code fillable-field" value="..."></td>
+                    <td data-label="شرح کالا یا خدمت:"><textarea class="item-desc fillable-field">نام و شرح محصول...</textarea></td>
+                    <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="۱۰"></td>
+                    <td data-label="واحد اندازه گیری:"><input type="text" class="unit fillable-field" value="عدد"></td>
+                    <td data-label="مبلغ واحد (ریال):"><input type="text" class="price fillable-field" value=""></td>
+                    <td data-label="تخفیف (ریال):"><input type="text" class="discount fillable-field" value=""></td>
+                    <td data-label="مبلغ کل (ریال):" class="row-total"></td>
+                    <td data-label="عملیات:"><button type="button" class="delete-btn" onclick="deleteRow(this)">حذف</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <button type="button" class="add-btn" onclick="addRow()">+ افزودن کالای جدید</button>
 
-    <!-- محاسبات و جمع کل -->
+    <!-- محاسبات و جمع کل با قابلیت اسکرول افقی در موبایل -->
     <div class="totals-container">
-        <table class="totals-table">
-            <tr>
-                <td class="label">جمع کل پس از تخفیف:</td>
-                <td id="sub-total">۰</td>
-            </tr>
-            <tr>
-                <td class="label">جمع مالیات بر ارزش افزوده (۱۰٪):</td>
-                <td id="tax-amount">۰</td>
-            </tr>
-            <tr class="grand-total-row">
-                <td class="label">جمع مبلغ کل بعلاوه مالیات بر ارزش افزوده:</td>
-                <td id="grand-total">۰</td>
-            </tr>
-            <tr class="words-row">
-    <td class="label" style="background-color: #f8fafc; font-size: 11px;">مبلغ کل به حروف:</td>
-    <td style="background-color: #fff; text-align: right;">
-        <textarea id="grand-total-words" class="fillable-field" style="font-weight: bold; color: #15803d; font-size: 11px; text-align: right; width: 100%; resize: none; overflow: hidden;" readonly>صفر ریال</textarea>
-    </td>
-</tr>
-        </table>
+        <div class="table-responsive">
+            <table class="totals-table">
+                <tr>
+                    <td class="label">جمع کل پس از تخفیف:</td>
+                    <td id="sub-total">۰</td>
+                </tr>
+                <tr>
+                    <td class="label">جمع مالیات بر ارزش افزوده (۱۰٪):</td>
+                    <td id="tax-amount">۰</td>
+                </tr>
+                <tr class="grand-total-row">
+                    <td class="label">جمع مبلغ کل بعلاوه مالیات بر ارزش افزوده:</td>
+                    <td id="grand-total">۰</td>
+                </tr>
+                <tr class="words-row">
+                    <td class="label" style="background-color: #f8fafc; font-size: 11px;">مبلغ کل به حروف:</td>
+                    <td style="background-color: #fff; text-align: right;">
+                        <textarea id="grand-total-words" class="fillable-field" style="font-weight: bold; color: #15803d; font-size: 11px; text-align: right; width: 100%; resize: none; overflow: hidden;" readonly>صفر ریال</textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <!-- بخش مهر و امضا -->
