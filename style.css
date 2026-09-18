@@ -377,11 +377,12 @@ textarea.item-desc:focus {
         background: transparent !important;
     }
     /* باز شدن کامل تکست‌آریا در زمان پرینت بدون اسکرول و بریدگی */
-    textarea.item-desc {
+textarea.item-desc {
         border: none !important;
         background: transparent !important;
         resize: none;
-        overflow: visible;
+        overflow: hidden !important; /* پنهان کردن اضافات بیش از ۴ خط */
+        max-height: 85px !important;  /* محدودیت ارتفاع برای حداکثر ۴ خط */
         height: auto !important;
         white-space: pre-wrap;
     }
