@@ -249,42 +249,35 @@ textarea.item-desc:focus {
 
 /* اصلاح توازن جدول جمع کل */
 .totals-table {
-    width: 80% !important;
-    min-width: 320px;
+    width: 70% !important;
     margin-right: auto;
     border-collapse: collapse;
     margin-bottom: 15px;
     font-size: 12px;
 }
 
+/* بازگرداندن بردرها و حاشیه‌ها به سلول‌های جدول جمع کل */
 .totals-table td {
-    border: 1px solid #cbd5e1;
+    border: 1px solid #cbd5e1 !important;
     padding: 6px 10px;
 }
 
-.totals-table .label {
+/* تعیین عرض دقیق ستون‌ها */
+.totals-table td.label {
+    width: 40% !important;
+    text-align: right;
     background-color: #f8fafc;
     font-weight: bold;
-    text-align: right;
     color: #475569;
-    width: 55%;
+}
+
+.totals-table td:not(.label) {
+    width: 60% !important;
 }
 
 .totals-table td:last-child {
     font-weight: bold;
     color: #1e293b;
-    text-align: left;
-}
-
-.grand-total-row {
-    background-color: #f0fdf4;
-    color: #166534;
-    font-weight: bold;
-}
-
-.words-row td {
-    padding: 6px 10px;
-    vertical-align: middle;
 }
 
 #grand-total-words {
