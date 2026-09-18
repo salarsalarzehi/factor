@@ -124,6 +124,7 @@ document.addEventListener("input", function(e) {
     }
 });
 
+// تابع اضافه کردن سطر جدید (با textarea و دکمه حذف)
 function addRow() {
     let tbody = document.getElementById("items-body");
     let rowCount = tbody.rows.length + 1;
@@ -132,14 +133,34 @@ function addRow() {
     newRow.innerHTML = `
         <td data-label="ردیف:">${toPersianNum(rowCount)}</td>
         <td data-label="کد کالا:"><input type="text" class="item-code fillable-field" placeholder="..."></td>
-        <td data-label="شرح کالا:"><input type="text" class="item-desc fillable-field" placeholder="نام و شرح محصول..."></td>
+        <td data-label="شرح کالا:"><textarea class="item-desc fillable-field" placeholder="نام و شرح محصول..."></textarea></td>
         <td data-label="تعداد:"><input type="text" class="qty fillable-field" value="" placeholder="۱"></td>
         <td data-label="واحد اندازه گیری:"><input type="text" class="unit fillable-field" value="عدد"></td>
         <td data-label="مبلغ واحد (ریال):"><input type="text" class="price fillable-field" value="" placeholder="۰"></td>
         <td data-label="تخفیف (ریال):"><input type="text" class="discount fillable-field" value="" placeholder="۰"></td>
         <td data-label="مبلغ کل (ریال):" class="row-total">۰</td>
+        <td data-label="عملیات:"><button type="button" class="delete-btn" onclick="deleteRow(this)">حذف</button></td>
     `;
     tbody.appendChild(newRow);
+}
+
+// تابع حذف سطر مشخص
+function deleteRow(button) {
+    let row = button.closest("tr");
+    row.remove();
+    updateRowNumbers();
+    calculate(); // محاسبه مجدد جمع‌ها پس از حذف سطر
+}
+
+// تابع به‌روزرسانی شماره ردیف‌ها بعد از حذف
+function updateRowNumbers() {
+    let rows = document.querySelectorAll("#items-body tr");
+    rows.forEach((row, index) => {
+        let numCell = row.querySelector("td:first-child");
+        if (numCell) {
+            numCell.innerText = toPersianNum(index + 1);
+        }
+    });
 }
 
 // تابع درج خودکار تاریخ روز به صورت شمسی
