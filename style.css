@@ -386,8 +386,7 @@ textarea.item-desc:focus {
         white-space: pre-wrap;
     }
 }
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and (not print) {
     body { padding: 4px; margin: 0; overflow-x: hidden; }
     .invoice-box { padding: 8px; border-radius: 0; box-shadow: none; border: none; width: 100% !important; box-sizing: border-box; }
     .invoice-header h2 { font-size: 15px; }
