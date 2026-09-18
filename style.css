@@ -395,88 +395,58 @@ textarea.item-desc:focus {
 }
 
 /* حالت ریسپانسیو موبایل */
+/* حالت ریسپانسیو موبایل با قابلیت اسکرول افقی برای جدول‌ها */
 @media screen and (max-width: 768px) and (not print) {
     body { 
-        padding: 4px !important; 
+        padding: 6px !important; 
         margin: 0 !important; 
-        overflow-x: hidden !important; 
     }
     
     .invoice-box { 
-        padding: 8px !important; 
-        border-radius: 0; 
-        box-shadow: none; 
-        border: none; 
+        padding: 12px !important; 
+        border-radius: 6px; 
         width: 100% !important; 
-        max-width: 100% !important;
         box-sizing: border-box !important; 
-        overflow-x: hidden !important;
     }
 
-    .invoice-header h2 { font-size: 15px; }
+    .invoice-header h2 { font-size: 16px; }
     .header-row { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
     .invoice-title { text-align: center; width: 100%; }
     .invoice-meta-column { width: 100%; align-items: center; text-align: center; }
     .inv-number-box, .inv-date-box { width: 100%; justify-content: space-between; max-width: 250px; }
 
-    .parties-table, .parties-table tbody, .parties-table tr, .parties-table td {
-        display: block !important; 
-        width: 100% !important; 
-        box-sizing: border-box !important;
-    }
-    .parties-table tr { margin-bottom: 4px; }
-    .parties-table td { padding: 5px 8px; text-align: right !important; }
-    .parties-table .label { background-color: #f1f5f9; font-size: 11px; width: 100% !important; }
-
-    .items-table thead { display: none !important; }
-    .items-table, .items-table tbody, .items-table tr, .items-table td {
-        display: block !important; 
-        width: 100% !important; 
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-    .items-table tr { 
-        background: #f8fafc; 
-        border: 1px solid #cbd5e1; 
-        border-radius: 6px; 
-        margin-bottom: 12px; 
-        padding: 10px; 
-    }
-    .items-table td { 
-        border: none !important; 
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        width: 100% !important; 
-        padding: 6px 0 !important; 
-        font-size: 12px; 
-        text-align: right !important; 
+    /* ایجاد کانتینر اسکرول افقی برای جداول در موبایل */
+    .parties-table, .items-table, .totals-table {
+        display: table !important;
+        width: 100% !important;
+        min-width: 600px !important; /* حداقل عرض برای اجبار به اسکرول افقی */
     }
 
-    .items-table td:nth-child(1):before { content: "شماره ردیف:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(2):before { content: "کد کالا:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(3):before { content: "شرح کالا یا خدمت:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(4):before { content: "تعداد:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(5):before { content: "واحد اندازه گیری:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(6):before { content: "مبلغ واحد (ریال):"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(7):before { content: "تخفیف (ریال):"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(8):before { content: "مبلغ کل (ریال):"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-    .items-table td:nth-child(9):before { content: "عملیات:"; font-weight: bold; color: #475569; margin-bottom: 2px; font-size: 11px; }
-
-    .items-table input, textarea.item-desc { 
-        text-align: right !important; 
-        width: 100% !important; 
-        max-width: 100% !important;
-        box-sizing: border-box !important; 
-        background: #fff !important; 
-        border: 1px solid #cbd5e1 !important; 
-        padding: 6px !important; 
-        border-radius: 3px !important; 
-        font-size: 12px !important; 
+    /* پیچیدن جداول داخل یک باکس با قابلیت اسکرول افقی */
+    .parties-table, .items-table, .totals-table {
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
     }
 
-    .totals-table { width: 100% !important; }
-    .totals-table td { font-size: 11px; padding: 6px; }
+    /* استایل سلول‌ها در حالت اسکرول افقی موبایل */
+    .parties-table td, .items-table td, .items-table th, .totals-table td {
+        display: table-cell !important;
+        white-space: nowrap !important;
+        font-size: 11px !important;
+        padding: 6px !important;
+    }
+
+    .items-table input, textarea.item-desc {
+        width: 100px !important; /* عرض ثابت برای اینپوت‌ها در حالت اسکرول */
+        min-width: 80px;
+    }
+
+    textarea.item-desc {
+        min-height: 35px !important;
+        height: 35px !important;
+    }
 
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 80px; }
