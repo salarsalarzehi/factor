@@ -144,6 +144,7 @@ body {
     border: 1px solid #cbd5e1;
     padding: 8px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .items-table th {
@@ -166,9 +167,16 @@ body {
     background: #fff;
 }
 
-.item-desc {
-    text-align: right !important;
-}
+/* تنظیم دقیق عرض ستون‌های جدول اقلام */
+.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }  /* ردیف */
+.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 9%; }  /* کد کالا */
+.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; } /* شرح کالا یا خدمت (عرض زیاد) */
+.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 7%; }  /* تعداد */
+.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 9%; }  /* واحد اندازه گیری */
+.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 13%; } /* مبلغ واحد */
+.items-table th:nth-child(7), .items-table td:nth-child(7) { width: 9%; }  /* تخفیف */
+.items-table th:nth-child(8), .items-table td:nth-child(8) { width: 12%; } /* مبلغ کل */
+.items-table th:nth-child(9), .items-table td:nth-child(9) { width: 4%; }  /* حذف */
 
 .add-btn {
     background-color: #0d9488;
@@ -286,6 +294,70 @@ body {
     object-fit: contain;
 }
 
+.words-row td {
+    padding: 6px 10px;
+    vertical-align: middle;
+}
+
+/* رفع مشکل قیمت به حروف (نمایش کامل و بدون سه نقطه) */
+#grand-total-words {
+    width: 100% !important;
+    box-sizing: border-box;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    border: none !important;
+    background: transparent !important;
+    font-weight: bold;
+    color: #166534;
+    font-size: 11px;
+    text-align: right;
+}
+
+/* تبدیل اینپوت شرح به تکست‌آریا با قابلیت تنظیم ارتفاع خودکار */
+textarea.item-desc {
+    width: 100%;
+    min-height: 45px;
+    height: auto;
+    resize: none;
+    border: 1px solid transparent;
+    background: #fff;
+    padding: 6px;
+    border-radius: 3px;
+    color: #334155;
+    font-family: inherit;
+    font-size: 12px;
+    box-sizing: border-box;
+    line-height: 1.6;
+    text-align: right !important;
+    overflow: hidden;
+}
+
+textarea.item-desc:focus {
+    border-color: #64748b;
+    outline: none;
+    background: #fff;
+}
+
+/* دکمه حذف سطر */
+.delete-btn {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #f87171;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+    color: #fff;
+}
+
 @media print {
     body {
         background: #fff;
@@ -297,12 +369,21 @@ body {
         padding: 0;
         max-width: 100%;
     }
-    .add-btn, .print-btn {
-        display: none;
+    .add-btn, .print-btn, .delete-btn {
+        display: none !important;
     }
     .fillable-field, .items-table input, #grand-total-words {
         border: none !important;
         background: transparent !important;
+    }
+    /* باز شدن کامل تکست‌آریا در زمان پرینت بدون اسکرول و بریدگی */
+    textarea.item-desc {
+        border: none !important;
+        background: transparent !important;
+        resize: none;
+        overflow: visible;
+        height: auto !important;
+        white-space: pre-wrap;
     }
 }
 
@@ -338,6 +419,7 @@ body {
     .items-table td:nth-child(6):before { content: "مبلغ واحد (ریال):"; }
     .items-table td:nth-child(7):before { content: "تخفیف (ریال):"; }
     .items-table td:nth-child(8):before { content: "مبلغ کل (ریال):"; }
+    .items-table td:nth-child(9):before { content: "عملیات:"; }
 
     .items-table input { text-align: right !important; width: 100% !important; box-sizing: border-box; background: #fff !important; border: 1px solid #cbd5e1 !important; padding: 6px; border-radius: 3px; font-size: 12px; }
 
@@ -347,72 +429,3 @@ body {
     .signatures { flex-direction: column; height: auto; gap: 10px; }
     .signature-box { width: 100% !important; height: 70px; }
 }
-.words-row td {
-    padding: 6px 10px;
-    vertical-align: middle;
-}
-
-#grand-total-words {
-    width: 100% !important;
-    box-sizing: border-box;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-/* تبدیل اینپوت شرح به تکست‌آریا با قابلیت تنظیم ارتفاع */
-textarea.item-desc {
-    width: 100%;
-    min-height: 38px;
-    max-height: 120px;
-    resize: vertical;
-    border: 1px solid transparent;
-    background: #fff;
-    padding: 6px;
-    border-radius: 3px;
-    color: #334155;
-    font-family: inherit;
-    font-size: 12px;
-    box-sizing: border-box;
-    line-height: 1.5;
-}
-
-textarea.item-desc:focus {
-    border-color: #64748b;
-    outline: none;
-    background: #fff;
-}
-
-/* دکمه حذف سطر */
-.delete-btn {
-    background-color: #fee2e2;
-    color: #dc2626;
-    border: 1px solid #f87171;
-    padding: 4px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 11px;
-    transition: all 0.2s;
-}
-
-.delete-btn:hover {
-    background-color: #dc2626;
-    color: #fff;
-}
-
-/* پنهان کردن دکمه حذف در هنگام پرینت */
-@media print {
-    .delete-btn {
-        display: none !important;
-    }
-}
-/* تنظیم دقیق عرض ستون‌های جدول اقلام */
-.items-table th:nth-child(1), .items-table td:nth-child(1) { width: 5%; }  /* ردیف */
-.items-table th:nth-child(2), .items-table td:nth-child(2) { width: 10%; } /* کد کالا */
-.items-table th:nth-child(3), .items-table td:nth-child(3) { width: 32%; } /* شرح کالا یا خدمت (عرض زیاد) */
-.items-table th:nth-child(4), .items-table td:nth-child(4) { width: 7%; }  /* تعداد */
-.items-table th:nth-child(5), .items-table td:nth-child(5) { width: 9%; }  /* واحد */
-.items-table th:nth-child(6), .items-table td:nth-child(6) { width: 13%; } /* مبلغ واحد */
-.items-table th:nth-child(7), .items-table td:nth-child(7) { width: 10%; } /* تخفیف */
-.items-table th:nth-child(8), .items-table td:nth-child(8) { width: 10%; } /* مبلغ کل */
-.items-table th:nth-child(9), .items-table td:nth-child(9) { width: 4%; }  /* حذف */
